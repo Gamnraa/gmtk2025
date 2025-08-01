@@ -7,9 +7,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wuo72"]
 shader = ExtResource("1_v40lu")
-shader_parameter/red = 0.25
-shader_parameter/blue = 0.5
-shader_parameter/green = 0.0
+shader_parameter/red = false
+shader_parameter/blue = true
+shader_parameter/green = true
 
 [sub_resource type="Animation" id="Animation_wuo72"]
 resource_name = "Appear"
@@ -108,7 +108,8 @@ scale = Vector2(31.7188, 9.9375)
 texture = ExtResource("2_eo7iu")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(60, 150)
+position = Vector2(60.5, 150)
+scale = Vector2(1.00781, 1)
 texture = ExtResource("4_wuo72")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
