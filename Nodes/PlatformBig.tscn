@@ -1,17 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4r00hkgdyuap"]
+[gd_scene load_steps=9 format=3 uid="uid://blaul8bw43pew"]
 
-[ext_resource type="Texture2D" uid="uid://cfdon2ivx1lvb" path="res://Graphics/small-platform.png" id="1_6ge7m"]
-[ext_resource type="Script" uid="uid://b0touuwcyjtxg" path="res://Scripts/platform.gd" id="1_17qbk"]
-[ext_resource type="Shader" uid="uid://tdnpojvrk85h" path="res://Shaders/ColorControl.gdshader" id="1_bjnky"]
+[ext_resource type="Script" uid="uid://b0touuwcyjtxg" path="res://Scripts/platform.gd" id="1_k6tpg"]
+[ext_resource type="Shader" uid="uid://tdnpojvrk85h" path="res://Shaders/ColorControl.gdshader" id="2_4df5m"]
+[ext_resource type="Texture2D" uid="uid://cy3qof46a5vj5" path="res://Graphics/big-platform.png" id="3_dpuo5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_17qbk"]
-shader = ExtResource("1_bjnky")
+shader = ExtResource("2_4df5m")
 shader_parameter/red = false
 shader_parameter/blue = false
 shader_parameter/green = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjnky"]
-size = Vector2(128, 128)
+size = Vector2(512, 128)
 
 [sub_resource type="Animation" id="Animation_6ge7m"]
 resource_name = "Appear"
@@ -123,11 +123,11 @@ _data = {
 }
 
 [node name="PlatformSmall" type="StaticBody2D"]
-script = ExtResource("1_17qbk")
+script = ExtResource("1_k6tpg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_17qbk")
-texture = ExtResource("1_6ge7m")
+texture = ExtResource("3_dpuo5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bjnky")
