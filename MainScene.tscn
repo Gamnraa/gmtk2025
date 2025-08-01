@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyabt5wt67cd6"]
+[gd_scene load_steps=6 format=3 uid="uid://dyabt5wt67cd6"]
 
 [ext_resource type="PackedScene" uid="uid://bnv1eu0nejpev" path="res://Nodes/DialogueBox.tscn" id="1_3mqji"]
 [ext_resource type="Script" uid="uid://b4pu6yamj454f" path="res://Scripts/moving_platform.gd" id="2_rpqi1"]
 [ext_resource type="PackedScene" uid="uid://b4r00hkgdyuap" path="res://Nodes/PlatformSmall.tscn" id="2_x4av3"]
+[ext_resource type="PackedScene" uid="uid://d3gsx1wbbm70y" path="res://Nodes/PlatformMed.tscn" id="4_uxrcv"]
 
 [sub_resource type="Curve2D" id="Curve2D_x4av3"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2, -2, 0, 0, 0, 0, 2, -254)
+"points": PackedVector2Array(0, 0, 0, 0, -2, -2, 0, 0, 0, 0, -2, -256)
 }
 point_count = 2
 
@@ -21,15 +22,24 @@ offset_bottom = 8.0
 size_flags_vertical = 8
 metadata/_edit_use_anchors_ = true
 
-[node name="Node2D" type="Path2D" parent="."]
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Plat1" type="Path2D" parent="Level"]
 position = Vector2(-55, 128)
 scale = Vector2(0.5, 0.5)
 curve = SubResource("Curve2D_x4av3")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Node2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Level/Plat1"]
 position = Vector2(-2, -2)
 rotates = false
 loop = false
 script = ExtResource("2_rpqi1")
 
-[node name="PlatformSmall" parent="Node2D/PathFollow2D" instance=ExtResource("2_x4av3")]
+[node name="PlatformSmall" parent="Level/Plat1/PathFollow2D" instance=ExtResource("2_x4av3")]
+
+[node name="PlatR1" type="Node2D" parent="Level"]
+position = Vector2(192, 128)
+scale = Vector2(0.5, 0.5)
+
+[node name="PlatformSmall" parent="Level/PlatR1" instance=ExtResource("4_uxrcv")]
+color = 0
