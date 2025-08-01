@@ -119,10 +119,11 @@ libraries = {
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 128.0
-offset_right = 956.0
-offset_bottom = 258.0
+offset_right = 985.0
+offset_bottom = 288.0
 text = "Hello, I am dialogue!"
 
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
