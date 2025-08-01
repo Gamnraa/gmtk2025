@@ -14,8 +14,14 @@ func _process(delta):
 		$RichTextLabel.text = parsed_message
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	should_parse = true
+	if self.visible:
+		should_parse = true
+
+func begin_dialog():
+	$AnimationPlayer.play("Appear")
 	
+func end_dialog():
+	$AnimationPlayer.play_backwards("Appear")
 	
 func set_message(message):
 	current_message = message
