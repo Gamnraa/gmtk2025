@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnv1eu0nejpev"]
+
+[ext_resource type="Shader" uid="uid://tdnpojvrk85h" path="res://Shaders/ColorControl.gdshader" id="1_v40lu"]
+[ext_resource type="Script" uid="uid://cd5tio43jwki3" path="res://Scripts/dialogue_box.gd" id="1_wuo72"]
+[ext_resource type="Texture2D" uid="uid://h8mw0vlj727n" path="res://Graphics/placeholder.png" id="2_eo7iu"]
+[ext_resource type="Texture2D" uid="uid://cvvud1asa3hov" path="res://icon.svg" id="3_eo7iu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wuo72"]
+shader = ExtResource("1_v40lu")
+shader_parameter/red = 0.25
+shader_parameter/blue = 0.5
+shader_parameter/green = 0.0
+
+[sub_resource type="Animation" id="Animation_wuo72"]
+resource_name = "Appear"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 500), Vector2(0, 50), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vlp87"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_50nuf"]
+_data = {
+&"Appear": SubResource("Animation_wuo72"),
+&"RESET": SubResource("Animation_vlp87")
+}
+
+[node name="DialogueBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wuo72")
+
+[node name="BG" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wuo72")
+position = Vector2(491.5, 143)
+scale = Vector2(31.7188, 9.9375)
+texture = ExtResource("2_eo7iu")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(60, 150)
+texture = ExtResource("3_eo7iu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_50nuf")
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 956.0
+offset_bottom = 258.0
+text = "Hello, I am dialogue!"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
