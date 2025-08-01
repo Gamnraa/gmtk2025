@@ -19,7 +19,6 @@ var dialog_tree = [
 		["DELAY", 3],
 		["SET", "My ultimate goal, if I were to make a mod, would be another Final Boss line, similar to CC and AF. Basically, using special Engraved Gems that you craft, you can summon various different bosses based off of the gems (Fire, Ice, Shadow, Telekenesis, Creation, Solar, and Lunar). You'll get special weapons and equipment for beating these bosses, and an Encrusted Fragment. After combining all of these fragments, it'll end up summoning this final boss, a power-crazed human named Paul that used to secretly care for Maxwell while he was on the throne, and wants nothing more than to overthrow the current Queen. Once eventually defeated, Charlie will end up smiting him (similar to AF), and it'll unlock Waul as a playable character as your final reward."],
 		["PROMPT", true],
-		["DELAY", .1]
 	],
 ]
 
@@ -83,6 +82,7 @@ func begin_dialog():
 func end_dialog():
 	$AnimationPlayer.play_backwards("Appear")
 	should_parse = false
+	Global.State = Global.NONE
 	
 func set_message(text):
 	current_message = text
