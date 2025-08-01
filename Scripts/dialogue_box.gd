@@ -1,8 +1,11 @@
 extends Control
 
+signal msgupdater
+
 var current_message = "Hello, can you hear me? Can you hear the VOID?"
 var parsed_message = ""
 var should_parse = false
+var player_input = true
 
 var dialog = null
 var tree_index = 0
@@ -27,15 +30,21 @@ func _process(delta):
 		parsed_message += current_message[parsed_message.length()]
 		if current_message.match(parsed_message): pause(1)
 		$RichTextLabel.text = parsed_message
+		
+	if Input.is_action_just_pressed("ui_accept") and not player_input:
+		player_input = true
+		pause(.1)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	print(self.visible)
 	if self.visible and dial_index < dialog_tree[tree_index].size():
 		should_parse = true
 		dialog = dialog_tree[tree_index][dial_index]
 		if dialog[0] == "DELAY":
 			pause(dialog[1])
 			return
+		elif dialog[0] == "PROMPT":
+			should_parse = false
+			player_input = false
 		elif dialog[0] == "SET":
 			set_message(dialog[1])
 		elif dialog[0] == "ADD":
