@@ -14,22 +14,47 @@ var dialog_tree = [
 	[
 		["SET", "The void."],
 		["ADD", " The void."],
-		["ADD", " The void."],
-		["ADD", " The void."],
+		["ADD", " The void is Red."],
+		["ADD", " The void is Green."],
 		["DELAY", 3],
 		["SET", "My ultimate goal, if I were to make a mod, would be another Final Boss line, similar to CC and AF. Basically, using special Engraved Gems that you craft, you can summon various different bosses based off of the gems (Fire, Ice, Shadow, Telekenesis, Creation, Solar, and Lunar). You'll get special weapons and equipment for beating these bosses, and an Encrusted Fragment. After combining all of these fragments, it'll end up summoning this final boss, a power-crazed human named Paul that used to secretly care for Maxwell while he was on the throne, and wants nothing more than to overthrow the current Queen. Once eventually defeated, Charlie will end up smiting him (similar to AF), and it'll unlock Waul as a playable character as your final reward."],
-		["PROMPT", true]
+		["PROMPT", true],
+		["DELAY", .1]
 	],
 ]
 
 func _ready():
 	$AnimationPlayer.play("Appear")
+	
+func validate_state():
+	var s = parsed_message.to_lower()
+	if s.contains("red"):
+		if s.contains("green"):
+			if s.contains("blue"):
+				Global.State = Global.REDGREENBLUE
+				return
+			Global.State = Global.REDGREEN
+			return
+		if s.contains("blue"):
+			Global.State = Global.REDBLUE
+			return
+		Global.State = Global.RED
+		return
+	if s.contains("green"):
+		if s.contains("blue"):
+			Global.State = Global.GREENBLUE
+			return
+	if s.contains("blue"):
+		Global.State = Global.BLUE
+		return
+	Global.State = Global.NONE
 
 func _process(delta):
 	if should_parse:
 		parsed_message += current_message[parsed_message.length()]
 		if current_message.match(parsed_message): pause(1)
-		$RichTextLabel.text = parsed_message
+		$RichTextLabel.text = parsed_message.replace("Red", "[color=red]Red[/color]").replace("Green", "[color=green]Green[/color]").replace("Blue", "[color=blue]Blue[/color]")
+		validate_state()
 		
 	if Input.is_action_just_pressed("ui_accept") and not player_input:
 		player_input = true
