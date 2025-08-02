@@ -7,7 +7,7 @@ enum {RED, GREEN, BLUE, REDGREEN, GREENBLUE, REDBLUE, REDGREENBLUE, NONE}
 var State = NONE
 var ActiveColors = {"RED":[RED, REDGREEN, REDBLUE, REDGREENBLUE], "GREEN":[GREEN, REDGREEN, GREENBLUE, REDGREENBLUE], "BLUE":[BLUE, GREENBLUE, REDBLUE, REDGREENBLUE]}
 
-var level = 1
+var level = 0
 var sublevel = 0
 
 var levels = [
@@ -40,6 +40,7 @@ func reset_player(should_progress):
 				level = -1
 			sublevel = -1
 			level += 1
+			TheScene.get_node("DialogueBox").tree_index += 1
 		sublevel += 1
 		
 		var next_level = levels[level][sublevel]

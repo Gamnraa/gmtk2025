@@ -8,7 +8,7 @@ var should_parse = false
 var player_input = true
 
 var dialog = null
-var tree_index = 1
+var tree_index = 0
 var dial_index = 0
 var dialog_tree = [
 	[
