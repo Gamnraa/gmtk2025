@@ -34,6 +34,7 @@ func _physics_process(delta: float):
 	if not(Input.is_action_pressed("left") or Input.is_action_pressed("right")) and grounded:
 		velocity.x = move_toward(velocity.x, 0, accel)
 		
-	if not was_grounded and grounded: velocity.x -= accel * 6.7
+	print(velocity.x)
+	if not was_grounded and grounded: velocity.x = max(velocity.x - (accel * 6.7), 0)
 	was_grounded = grounded
 	move_and_slide()
