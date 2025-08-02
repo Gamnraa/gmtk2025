@@ -39,7 +39,6 @@ func _physics_process(delta: float):
 		velocity.x = move_toward(velocity.x, 0, accel)
 		$Sprite2D/AnimationPlayer.play("player-idle")
 		
-	print(velocity.x)
 	if not was_grounded and grounded: velocity.x = max(velocity.x - (accel * 6.7), 0)
 	was_grounded = grounded
 	move_and_slide()
