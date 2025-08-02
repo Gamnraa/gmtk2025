@@ -1,18 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyabt5wt67cd6"]
+[gd_scene load_steps=5 format=3 uid="uid://dyabt5wt67cd6"]
 
 [ext_resource type="PackedScene" uid="uid://bnv1eu0nejpev" path="res://Nodes/DialogueBox.tscn" id="1_3mqji"]
-[ext_resource type="Script" uid="uid://b4pu6yamj454f" path="res://Scripts/moving_platform.gd" id="2_rpqi1"]
-[ext_resource type="PackedScene" uid="uid://b4r00hkgdyuap" path="res://Nodes/PlatformSmall.tscn" id="2_x4av3"]
+[ext_resource type="PackedScene" uid="uid://c4jmhrus4k2pi" path="res://Nodes/Levels/1_1.tscn" id="4_a814b"]
 [ext_resource type="PackedScene" uid="uid://d3gsx1wbbm70y" path="res://Nodes/PlatformMed.tscn" id="4_uxrcv"]
-
-[sub_resource type="Curve2D" id="Curve2D_x4av3"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2, -2, 0, 0, 0, 0, -2, -256)
-}
-point_count = 2
+[ext_resource type="PackedScene" uid="uid://b0lvj8oiu4m7n" path="res://Nodes/Player.tscn" id="5_rf2cd"]
 
 [node name="MainScene" type="Node2D"]
 position = Vector2(88, 340)
+
+[node name="PlatR2" type="Node2D" parent="."]
+position = Vector2(-88, 126)
+scale = Vector2(0.5, 0.5)
+
+[node name="PlatformSmall" parent="PlatR2" instance=ExtResource("4_uxrcv")]
+
+[node name="Level" type="Node2D" parent="."]
+position = Vector2(150, 0)
+
+[node name="1-1" parent="Level" instance=ExtResource("4_a814b")]
+position = Vector2(38, 126)
+
+[node name="Player" parent="." instance=ExtResource("5_rf2cd")]
+position = Vector2(-49, 48)
 
 [node name="DialogueBox" parent="." instance=ExtResource("1_3mqji")]
 offset_left = -88.0
@@ -21,25 +30,3 @@ offset_right = -88.0
 offset_bottom = 8.0
 size_flags_vertical = 8
 metadata/_edit_use_anchors_ = true
-
-[node name="Level" type="Node2D" parent="."]
-
-[node name="Plat1" type="Path2D" parent="Level"]
-position = Vector2(-55, 128)
-scale = Vector2(0.5, 0.5)
-curve = SubResource("Curve2D_x4av3")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Level/Plat1"]
-position = Vector2(-2, -2)
-rotates = false
-loop = false
-script = ExtResource("2_rpqi1")
-
-[node name="PlatformSmall" parent="Level/Plat1/PathFollow2D" instance=ExtResource("2_x4av3")]
-
-[node name="PlatR1" type="Node2D" parent="Level"]
-position = Vector2(192, 128)
-scale = Vector2(0.5, 0.5)
-
-[node name="PlatformSmall" parent="Level/PlatR1" instance=ExtResource("4_uxrcv")]
-color = 0
