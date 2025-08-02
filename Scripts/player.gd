@@ -19,7 +19,7 @@ func _physics_process(delta: float):
 	max_speed = ground_speed
 	if not grounded:
 		max_speed = air_speed
-		velocity += get_gravity() * 0.034
+		velocity += get_gravity() * 0.037
 	
 	if grounded and Input.is_action_just_pressed("jump"):
 		velocity.y = -air_speed * 2
