@@ -7,12 +7,12 @@ uniform bool green = false;
 void fragment() {
 	COLOR = texture(TEXTURE, UV);
 	if(red == true) {
-		COLOR.r = 0.85;
+		COLOR.r = 0.55;
 	}
 	if(blue == true) {
-		COLOR.b = 0.85;
+		COLOR.b = 0.55;
 	}
 	if(green == true) {
-		COLOR.g = 0.85;
+		COLOR.g = 0.55;
 	}
 }
