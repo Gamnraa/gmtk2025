@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqbip4kljwctd"]
+
+[ext_resource type="AudioStream" path="res://Audio/base_track.ogg" id="1_iji5r"]
+[ext_resource type="Script" path="res://audio_stream_player.gd" id="1_k7hrx"]
+[ext_resource type="AudioStream" path="res://Audio/r.ogg" id="2_jijii"]
+[ext_resource type="AudioStream" path="res://Audio/g.ogg" id="3_x6la4"]
+[ext_resource type="AudioStream" path="res://Audio/b.ogg" id="4_33x0r"]
+[ext_resource type="AudioStream" path="res://Audio/rg.ogg" id="5_qpoly"]
+[ext_resource type="AudioStream" path="res://Audio/gb.ogg" id="6_dwyln"]
+[ext_resource type="AudioStream" path="res://Audio/rb.ogg" id="7_ufo7q"]
+[ext_resource type="AudioStream" path="res://Audio/rgb.ogg" id="8_h4cdh"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_iji5r"]
+clip_count = 8
+clip_0/name = &"R"
+clip_0/stream = ExtResource("2_jijii")
+clip_0/auto_advance = 0
+clip_1/name = &"G"
+clip_1/stream = ExtResource("3_x6la4")
+clip_1/auto_advance = 0
+clip_2/name = &"B"
+clip_2/stream = ExtResource("4_33x0r")
+clip_2/auto_advance = 0
+clip_3/name = &"Rg"
+clip_3/stream = ExtResource("5_qpoly")
+clip_3/auto_advance = 0
+clip_4/name = &"Gb"
+clip_4/stream = ExtResource("6_dwyln")
+clip_4/auto_advance = 0
+clip_5/name = &"Rb"
+clip_5/stream = ExtResource("7_ufo7q")
+clip_5/auto_advance = 0
+clip_6/name = &"Rgb"
+clip_6/stream = ExtResource("8_h4cdh")
+clip_6/auto_advance = 0
+clip_7/name = &"base"
+clip_7/stream = ExtResource("1_iji5r")
+clip_7/auto_advance = 0
+initial_clip = 7
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 0.1,
+"fade_mode": 3,
+"from_time": 1,
+"to_time": 0
+}
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamInteractive_iji5r")
+volume_db = -9.25
+script = ExtResource("1_k7hrx")
