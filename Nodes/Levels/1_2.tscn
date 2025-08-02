@@ -1,14 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bedniq2na6axs"]
+[gd_scene load_steps=3 format=3 uid="uid://bedniq2na6axs"]
 
 [ext_resource type="PackedScene" uid="uid://blaul8bw43pew" path="res://Nodes/PlatformBig.tscn" id="1_j8kec"]
-[ext_resource type="Script" uid="uid://b4pu6yamj454f" path="res://Scripts/moving_platform.gd" id="2_csb0s"]
 [ext_resource type="PackedScene" uid="uid://b4r00hkgdyuap" path="res://Nodes/PlatformSmall.tscn" id="3_lugq8"]
-
-[sub_resource type="Curve2D" id="Curve2D_rcoyw"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, -288)
-}
-point_count = 2
 
 [node name="1-1" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -30,29 +23,16 @@ position = Vector2(1500, 0)
 [node name="PlatformBig3" parent="Node2D3" instance=ExtResource("1_j8kec")]
 color = 2
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Node2D" parent="."]
 position = Vector2(192, -128)
-curve = SubResource("Curve2D_rcoyw")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PlatformSmall" parent="Path2D" instance=ExtResource("3_lugq8")]
 position = Vector2(0, -2)
 rotation = -1.5708
-loop = false
-script = ExtResource("2_csb0s")
-speed = 1.2
 
-[node name="PlatformSmall" parent="Path2D/PathFollow2D" instance=ExtResource("3_lugq8")]
-
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="Path2D2" type="Node2D" parent="."]
 position = Vector2(944, -130)
-curve = SubResource("Curve2D_rcoyw")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(0, -145)
+[node name="PlatformSmall" parent="Path2D2" instance=ExtResource("3_lugq8")]
+position = Vector2(0, -1)
 rotation = -1.5708
-progress = 143.0
-loop = false
-script = ExtResource("2_csb0s")
-speed = 1.2
-
-[node name="PlatformSmall" parent="Path2D2/PathFollow2D" instance=ExtResource("3_lugq8")]
