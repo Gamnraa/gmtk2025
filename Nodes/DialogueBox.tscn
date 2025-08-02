@@ -132,6 +132,7 @@ bbcode_enabled = true
 text = "[color=red]Hello, I am dialogue![/color]"
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
