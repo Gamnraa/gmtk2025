@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bnv1eu0nejpev"]
+[gd_scene load_steps=13 format=3 uid="uid://bnv1eu0nejpev"]
 
 [ext_resource type="Shader" uid="uid://tdnpojvrk85h" path="res://Shaders/ColorControl.gdshader" id="1_v40lu"]
 [ext_resource type="Script" uid="uid://cd5tio43jwki3" path="res://Scripts/dialogue_box.gd" id="1_wuo72"]
 [ext_resource type="Texture2D" uid="uid://h8mw0vlj727n" path="res://Graphics/placeholder.png" id="2_eo7iu"]
+[ext_resource type="Texture2D" uid="uid://bc8d7ehcavwlw" path="res://Graphics/dialogue-box.png" id="3_50nuf"]
 [ext_resource type="Texture2D" uid="uid://b12k6ybnudxq7" path="res://Graphics/Dr._Dialogue.png" id="4_wuo72"]
 [ext_resource type="Shader" uid="uid://ca5j1ri5yuhl8" path="res://Nodes/TextShader.gdshader" id="5_vlp87"]
 [ext_resource type="Texture2D" uid="uid://cphv4g4uruldb" path="res://Graphics/enter-key.png" id="6_50nuf"]
@@ -106,14 +107,21 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_wuo72")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(574.5, 226)
+scale = Vector2(8.97656, 2.39063)
+texture = ExtResource("3_50nuf")
+
 [node name="BG" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_wuo72")
 position = Vector2(575, 227)
 scale = Vector2(35.9375, 4.6875)
 texture = ExtResource("2_eo7iu")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(39, 234)
+position = Vector2(103, 227)
 scale = Vector2(0.605469, 0.600775)
 texture = ExtResource("4_wuo72")
 
@@ -125,10 +133,10 @@ libraries = {
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 material = SubResource("ShaderMaterial_50nuf")
 layout_mode = 0
-offset_left = 128.0
-offset_top = 156.0
-offset_right = 1151.0
-offset_bottom = 298.0
+offset_left = 143.0
+offset_top = 178.0
+offset_right = 1166.0
+offset_bottom = 320.0
 bbcode_enabled = true
 text = "[color=red]Hello, I am dialogue![/color]"
 
@@ -137,7 +145,7 @@ one_shot = true
 
 [node name="Enter" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1068, 258)
+position = Vector2(1008, 244)
 texture = ExtResource("6_50nuf")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

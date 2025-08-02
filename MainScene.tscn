@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyabt5wt67cd6"]
+[gd_scene load_steps=13 format=3 uid="uid://dyabt5wt67cd6"]
 
 [ext_resource type="PackedScene" uid="uid://bnv1eu0nejpev" path="res://Nodes/DialogueBox.tscn" id="1_3mqji"]
 [ext_resource type="Script" uid="uid://cwxv6yblfuae2" path="res://Scripts/main_scene.gd" id="1_rf2cd"]
@@ -6,13 +6,35 @@
 [ext_resource type="PackedScene" uid="uid://d3gsx1wbbm70y" path="res://Nodes/PlatformMed.tscn" id="4_uxrcv"]
 [ext_resource type="PackedScene" uid="uid://b0lvj8oiu4m7n" path="res://Nodes/Player.tscn" id="5_rf2cd"]
 [ext_resource type="Texture2D" uid="uid://ck40qrlgtnsmr" path="res://Graphics/background.png" id="6_a814b"]
-[ext_resource type="PackedScene" uid="uid://ms468kyp0u1f" path="res://Graphics/window.tscn" id="7_5crlr"]
+[ext_resource type="Texture2D" uid="uid://df5kty0vkg2qe" path="res://Graphics/window-spritesheet.png" id="7_5crlr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxrcv"]
 size = Vector2(1907, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rf2cd"]
 size = Vector2(129, 178)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbc2u"]
+atlas = ExtResource("7_5crlr")
+region = Rect2(0, 128, 512, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_torvr"]
+atlas = ExtResource("7_5crlr")
+region = Rect2(0, 256, 512, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xkvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbc2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_torvr")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 1.0
+}]
 
 [node name="MainScene" type="Node2D"]
 position = Vector2(88, 340)
@@ -61,9 +83,12 @@ position = Vector2(503, 108)
 scale = Vector2(1.1543, 1.1543)
 texture = ExtResource("6_a814b")
 
-[node name="Node2D" parent="." instance=ExtResource("7_5crlr")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
 position = Vector2(509, -298)
+sprite_frames = SubResource("SpriteFrames_8xkvn")
+animation = &"new_animation"
+autoplay = "new_animation"
 
 [connection signal="body_entered" from="Lose" to="." method="_on_lose_body_entered"]
 [connection signal="body_entered" from="Win" to="." method="_on_win_body_entered"]
