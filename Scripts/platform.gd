@@ -28,14 +28,14 @@ func disappear():
 
 func _ready():
 	if color == Global.NONE: init_visible()
-	else: 
-		init_hidden()
-		var is_shader_color = color in Global.ActiveColors["RED"]
-		$Sprite2D.material.set_shader_parameter("red", is_shader_color)
-		is_shader_color = color in Global.ActiveColors["GREEN"]		
-		$Sprite2D.material.set_shader_parameter("green", is_shader_color)
-		is_shader_color = color in Global.ActiveColors["BLUE"]
-		$Sprite2D.material.set_shader_parameter("blue", is_shader_color)
+	else: init_hidden()
+	
+	var is_shader_color = color in Global.ActiveColors["RED"]
+	$Sprite2D.material.set_shader_parameter("red", is_shader_color)
+	is_shader_color = color in Global.ActiveColors["GREEN"]		
+	$Sprite2D.material.set_shader_parameter("green", is_shader_color)
+	is_shader_color = color in Global.ActiveColors["BLUE"]
+	$Sprite2D.material.set_shader_parameter("blue", is_shader_color)
 		
 	if Global.State != Global.NONE and color == Global.State:
 		appear()
