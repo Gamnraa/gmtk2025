@@ -8,16 +8,19 @@ scale = Vector2(0.5, 0.5)
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="PlatformBig" parent="Node2D" instance=ExtResource("1_kx4st")]
+position = Vector2(0, -64)
 color = 0
 
 [node name="Node2D2" type="Node2D" parent="."]
 position = Vector2(750, 0)
 
 [node name="PlatformBig2" parent="Node2D2" instance=ExtResource("1_kx4st")]
+position = Vector2(18, -64)
 color = 0
 
 [node name="Node2D3" type="Node2D" parent="."]
 position = Vector2(1500, 0)
 
 [node name="PlatformBig3" parent="Node2D3" instance=ExtResource("1_kx4st")]
+position = Vector2(36, -64)
 color = 0
