@@ -27,6 +27,9 @@ func disappear():
 	$AnimationPlayer.play_backwards("Appear")
 
 func _ready():
+	init_hidden()
+	await get_tree().create_timer(.1).timeout
+	print("ready")
 	if color == Global.NONE: init_visible()
 	else: init_hidden()
 	

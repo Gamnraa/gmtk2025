@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3gsx1wbbm70y"]
+[gd_scene load_steps=3 format=3 uid="uid://d3gsx1wbbm70y"]
 
+[ext_resource type="Script" uid="uid://oxfvntc3tkyh" path="res://Scripts/color_control.gd" id="1_5lcxt"]
 [ext_resource type="PackedScene" uid="uid://b53ti1s2keskq" path="res://Nodes/medium.tscn" id="1_83msd"]
 
 [node name="PlatformMedium" type="Node2D"]
+script = ExtResource("1_5lcxt")
 
 [node name="PlatformMed" parent="." instance=ExtResource("1_83msd")]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://blaul8bw43pew"]
+[gd_scene load_steps=3 format=3 uid="uid://blaul8bw43pew"]
 
+[ext_resource type="Script" uid="uid://oxfvntc3tkyh" path="res://Scripts/color_control.gd" id="1_5roky"]
 [ext_resource type="PackedScene" uid="uid://dnt722sduchb1" path="res://Nodes/big.tscn" id="1_lh20i"]
 
 [node name="PlatformBig" type="Node2D"]
+script = ExtResource("1_5roky")
 
 [node name="PlatformBig" parent="." instance=ExtResource("1_lh20i")]
