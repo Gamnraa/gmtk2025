@@ -43,16 +43,16 @@ var dialog_tree = [
 	],
 	[
 		["SET", "Roses are Red."],
-		["DELAY", .76],
+		["DELAY", 1.51],
 		["ADD", " Violets are Blue."],
-		["DELAY", .74],
+		["DELAY", 1.49],
 		["SET", "I am Green with envy, watching you!"],
 		["PROMPT", true],
 		["SET", "Ah, apologies. My poetry must make you Red with rage!"],
-		["DELAY", .44],
+		["DELAY", 1.16],
 		["SET_IMMEDIATE", "My poetry must make you Red with rage!"],
 		["ADD", " Or maybe I've got you feeling a little Blue!"],
-		["DELAY", .22],
+		["DELAY", .97],
 	],
 		["SET", "Red "],
 		["DELAY", .25],
@@ -152,13 +152,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func begin_dialog():
 	$AnimationPlayer.play("Appear")
 	dial_index = 0
-	#Global.TheScene.get_node("Window").play("talking")
+	Global.TheScene.get_node("Window").play("talking")
 	
 func end_dialog():
 	$AnimationPlayer.play_backwards("Appear")
 	should_parse = false
 	Global.State = Global.NONE
-	#Global.TheScene.get_node("Window").play("idle")
+	Global.TheScene.get_node("Window").play("idle")
 	
 func set_message(text):
 	current_message = text
@@ -180,7 +180,7 @@ func set_richtext(text):
 	parsed_message = text
 	current_message = text
 	$RichTextLabel.text = parsed_message.replace("Red", "[color=red]Red[/color]").replace("Green", "[color=green]Green[/color]").replace("Blue", "[color=blue]Blue[/color]")
-	pause(0)
+	pause(0.1)
 	validate_state()
 	#parsed_message = ""
 	
