@@ -14,11 +14,11 @@ var valid_colors = [
 
 func init_hidden():
 	self.visible = false
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.set_deferred("disabled", true)
 
 func init_visible():
 	self.visible = true
-	$CollisionShape2D.disabled = false
+	$CollisionShape2D.set_deferred("disabled", false)
 	
 func appear():
 	$AnimationPlayer.play("Appear")
