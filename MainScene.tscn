@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyabt5wt67cd6"]
+[gd_scene load_steps=15 format=3 uid="uid://dyabt5wt67cd6"]
 
 [ext_resource type="PackedScene" uid="uid://bnv1eu0nejpev" path="res://Nodes/DialogueBox.tscn" id="1_3mqji"]
 [ext_resource type="Script" uid="uid://cwxv6yblfuae2" path="res://Scripts/main_scene.gd" id="1_rf2cd"]
@@ -23,6 +23,10 @@ region = Rect2(0, 128, 512, 128)
 atlas = ExtResource("7_5crlr")
 region = Rect2(0, 256, 512, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xkvn"]
+atlas = ExtResource("7_5crlr")
+region = Rect2(0, 0, 512, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xkvn"]
 animations = [{
 "frames": [{
@@ -33,8 +37,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_torvr")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"idle",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xkvn")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
 }]
 
 [node name="MainScene" type="Node2D"]
@@ -90,8 +102,8 @@ texture = ExtResource("6_a814b")
 z_index = -1
 position = Vector2(509, -298)
 sprite_frames = SubResource("SpriteFrames_8xkvn")
-animation = &"new_animation"
-autoplay = "new_animation"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("8_hbc2u")]
 

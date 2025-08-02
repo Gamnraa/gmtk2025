@@ -9,16 +9,16 @@ position = Vector2(16, -32)
 scale = Vector2(0.5, 0.5)
 
 [node name="PlatformSmall10" parent="." instance=ExtResource("1_y4cek")]
-position = Vector2(1264, -864)
+position = Vector2(1808, -928)
 
 [node name="PlatformSmall12" parent="." instance=ExtResource("1_y4cek")]
 position = Vector2(1440, 0)
 
 [node name="PlatformSmall13" parent="." instance=ExtResource("1_y4cek")]
-position = Vector2(160, 0)
+position = Vector2(1792, -928)
 
 [node name="PlatformMedium5" parent="." instance=ExtResource("2_genog")]
-position = Vector2(1296, -592)
+position = Vector2(1744, -512)
 rotation = 1.5708
 color = 0
 
@@ -26,7 +26,7 @@ color = 0
 position = Vector2(1632, 0)
 
 [node name="PlatformBig7" parent="." instance=ExtResource("3_mkst0")]
-position = Vector2(1952, -640)
+position = Vector2(1536, -800)
 rotation = 1.5708
 
 [node name="PlatformSmall33" parent="." instance=ExtResource("1_y4cek")]
@@ -34,36 +34,36 @@ position = Vector2(1824, -960)
 color = 4
 
 [node name="PlatformSmall35" parent="." instance=ExtResource("1_y4cek")]
-position = Vector2(1696, -832)
+position = Vector2(1792, -944)
 color = 2
 
 [node name="PlatformSmall40" parent="." instance=ExtResource("1_y4cek")]
-position = Vector2(1824, -704)
+position = Vector2(1824, -976)
 color = 1
 
 [node name="PlatformSmall41" parent="." instance=ExtResource("1_y4cek")]
-position = Vector2(800, -960)
+position = Vector2(1824, -928)
 
 [node name="PlatformSmall42" parent="." instance=ExtResource("1_y4cek")]
-position = Vector2(1184, 0)
+position = Vector2(1760, -896)
 
 [node name="PlatformMedium7" parent="." instance=ExtResource("2_genog")]
-position = Vector2(1360, -880)
+position = Vector2(1792, -512)
 rotation = 1.5708
 
 [node name="PlatformMedium8" parent="." instance=ExtResource("2_genog")]
-position = Vector2(928, -896)
+position = Vector2(1696, -528)
 rotation = 1.5708
 
 [node name="PlatformBig4" parent="." instance=ExtResource("3_mkst0")]
-position = Vector2(1120, 128)
+position = Vector2(1168, -992)
 
 [node name="PlatformBig9" parent="." instance=ExtResource("3_mkst0")]
-position = Vector2(608, 128)
+position = Vector2(1168, -1008)
 color = 0
 
 [node name="PlatformBig10" parent="." instance=ExtResource("3_mkst0")]
-position = Vector2(288, -64)
+position = Vector2(1552, -752)
 rotation = 1.5708
 
 [node name="PlatformBig11" parent="." instance=ExtResource("3_mkst0")]
@@ -71,15 +71,15 @@ position = Vector2(1568, -768)
 rotation = 1.5708
 
 [node name="PlatformBig12" parent="." instance=ExtResource("3_mkst0")]
-position = Vector2(1248, -704)
+position = Vector2(1184, -1040)
 color = 4
 
 [node name="PlatformMedium10" parent="." instance=ExtResource("2_genog")]
-position = Vector2(1344, -784)
+position = Vector2(1904, -704)
 color = 2
 
 [node name="PlatformMedium12" parent="." instance=ExtResource("2_genog")]
-position = Vector2(1360, -784)
+position = Vector2(1936, -704)
 color = 1
 
 [node name="PlatformMedium14" parent="." instance=ExtResource("2_genog")]
