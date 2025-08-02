@@ -4,10 +4,10 @@ var valid_colors = [
 	[Global.RED],
 	[Global.GREEN],
 	[Global.BLUE],
-	[Global.RED, Global.GREEN],
-	[Global.GREEN, Global.BLUE],
-	[Global.RED, Global.BLUE],
-	[Global.RED, Global.GREEN, Global.BLUE],
+	[Global.RED, Global.GREEN, Global.REDGREEN],
+	[Global.GREEN, Global.BLUE, Global.GREENBLUE],
+	[Global.RED, Global.BLUE, Global.REDBLUE],
+	[Global.RED, Global.GREEN, Global.BLUE, Global.REDGREENBLUE, Global.REDGREEN, Global.GREENBLUE, Global.REDBLUE],
 	[]
 	]
 
