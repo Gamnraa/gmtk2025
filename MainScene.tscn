@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyabt5wt67cd6"]
+[gd_scene load_steps=14 format=3 uid="uid://dyabt5wt67cd6"]
 
 [ext_resource type="PackedScene" uid="uid://bnv1eu0nejpev" path="res://Nodes/DialogueBox.tscn" id="1_3mqji"]
 [ext_resource type="Script" uid="uid://cwxv6yblfuae2" path="res://Scripts/main_scene.gd" id="1_rf2cd"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b0lvj8oiu4m7n" path="res://Nodes/Player.tscn" id="5_rf2cd"]
 [ext_resource type="Texture2D" uid="uid://ck40qrlgtnsmr" path="res://Graphics/background.png" id="6_a814b"]
 [ext_resource type="Texture2D" uid="uid://df5kty0vkg2qe" path="res://Graphics/window-spritesheet.png" id="7_5crlr"]
+[ext_resource type="PackedScene" uid="uid://4inwg4sk6cir" path="res://Nodes/audio_stream_player.tscn" id="8_hbc2u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxrcv"]
 size = Vector2(1907, 100)
@@ -45,11 +46,13 @@ position = Vector2(-88, 126)
 scale = Vector2(0.5, 0.5)
 
 [node name="PlatformSmall" parent="PlatR2" instance=ExtResource("4_uxrcv")]
+position = Vector2(0, 28)
 
 [node name="Level" type="Node2D" parent="."]
 position = Vector2(185, 128)
 
 [node name="1-1" parent="Level" instance=ExtResource("4_a814b")]
+position = Vector2(-17, 44)
 
 [node name="Player" parent="." instance=ExtResource("5_rf2cd")]
 position = Vector2(-49, 48)
@@ -89,6 +92,8 @@ position = Vector2(509, -298)
 sprite_frames = SubResource("SpriteFrames_8xkvn")
 animation = &"new_animation"
 autoplay = "new_animation"
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("8_hbc2u")]
 
 [connection signal="body_entered" from="Lose" to="." method="_on_lose_body_entered"]
 [connection signal="body_entered" from="Win" to="." method="_on_win_body_entered"]

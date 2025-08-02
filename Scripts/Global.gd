@@ -8,7 +8,7 @@ var State = NONE
 var ActiveColors = {"RED":[RED, REDGREEN, REDBLUE, REDGREENBLUE], "GREEN":[GREEN, REDGREEN, GREENBLUE, REDGREENBLUE], "BLUE":[BLUE, GREENBLUE, REDBLUE, REDGREENBLUE]}
 
 var level = 0
-var sublevel = 0
+var sublevel = 2
 
 var levels = [
 	["1_1.tscn", "1_2.tscn", "1_3.tscn", "1_4.tscn"],
@@ -21,6 +21,13 @@ func _ready():
 	var root = get_tree().get_root()
 	TheScene = root.get_child(root.get_child_count() - 1)
 	ThePlayer = TheScene.get_node("Player")
+	#reset_player(false)
+	
+	var next_level = levels[level][sublevel]
+		
+	TheScene.get_node("Level").get_child(0).free()
+	next_level = load("res://Nodes/Levels/" + next_level)
+	TheScene.get_node("Level").add_child(next_level.instantiate())
 	
 func reset_player(should_progress):
 	ThePlayer.position = ThePlayer.start_pos
