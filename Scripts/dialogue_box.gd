@@ -12,18 +12,22 @@ var tree_index = 0
 var dial_index = 0
 var dialog_tree = [
 	[
-		["SET", "The void."],
-		["ADD", " The void."],
-		["ADD", " The void is Red."],
-		["ADD", " The void is Green."],
-		["DELAY", 3],
-		["SET", "My ultimate goal, if I were to make a mod, would be another Final Boss line, similar to CC and AF. Basically, using special Engraved Gems that you craft, you can summon various different bosses based off of the gems (Fire, Ice, Shadow, Telekenesis, Creation, Solar, and Lunar). You'll get special weapons and equipment for beating these bosses, and an Encrusted Fragment. After combining all of these fragments, it'll end up summoning this final boss, a power-crazed human named Paul that used to secretly care for Maxwell while he was on the throne, and wants nothing more than to overthrow the current Queen. Once eventually defeated, Charlie will end up smiting him (similar to AF), and it'll unlock Waul as a playable character as your final reward."],
+		["SET", "Red is one of the 3 additive primary colors. From apples to cardinals to red blood cells, it permeates all around us."],
+		["PROMPT", true],
+		["SET", "The trees that provide us with oxygen, the vegetables we consume: Green."],
+		["PROMPT", true],
+		["SET", "The final primary color, additively: Blue."],
+		["DELAY", 0.25],
+		["ADD", " The water we drink."],
+		["DELAY", 0.25],
+		["ADD", " It is essential to our very exisence."],
 		["PROMPT", true],
 	],
 ]
 
 func _ready():
-	$AnimationPlayer.play("Appear")
+	visible = false
+	_on_animation_player_animation_finished("Appear")
 	
 func validate_state():
 	var s = parsed_message.to_lower()
@@ -43,6 +47,8 @@ func validate_state():
 		if s.contains("blue"):
 			Global.State = Global.GREENBLUE
 			return
+		Global.State = Global.GREEN
+		return
 	if s.contains("blue"):
 		Global.State = Global.BLUE
 		return
@@ -55,9 +61,10 @@ func _process(delta):
 		$RichTextLabel.text = parsed_message.replace("Red", "[color=red]Red[/color]").replace("Green", "[color=green]Green[/color]").replace("Blue", "[color=blue]Blue[/color]")
 		validate_state()
 		
-	if Input.is_action_just_pressed("ui_accept") and not player_input:
+	if Input.is_action_just_pressed("enter") and not player_input:
 		player_input = true
-		pause(.1)
+		if visible: pause(.1)
+		else: begin_dialog()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if self.visible and dial_index < dialog_tree[tree_index].size():
@@ -75,9 +82,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			add_to_message(dialog[1])
 	elif self.visible:
 		end_dialog()
+	elif not self.visible:
+		player_input = false
+		$RichTextLabel.text = ""
 
 func begin_dialog():
 	$AnimationPlayer.play("Appear")
+	dial_index = 0
 	
 func end_dialog():
 	$AnimationPlayer.play_backwards("Appear")
