@@ -40,6 +40,7 @@ func reset_player(should_progress):
 				level = -1
 			sublevel = -1
 			level += 1
+			TheScene.get_node("DialogueBox").tree_index += 1
 		sublevel += 1
 		
 		var next_level = levels[level][sublevel]
