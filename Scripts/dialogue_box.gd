@@ -8,7 +8,7 @@ var should_parse = false
 var player_input = true
 
 var dialog = null
-var tree_index = 0
+var tree_index = 1
 var dial_index = 0
 var dialog_tree = [
 	[
@@ -30,7 +30,16 @@ var dialog_tree = [
 		["DELAY", .33],
 		["SET_IMMEDIATE", "Green..."],
 		["DELAY", .15],
-		
+		["ADD", " Blue..."],
+		["PROMPT", true],
+		["SET", "These colors, Red,"],
+		["DELAY", .20],
+		["ADD", " Green,"],
+		["DELAY", .40],
+		["ADD", " Blue."],
+		["DELAY", 1.25],
+		["ADD", " Surround us at all times."],
+		["PROMPT", true],
 	]
 ]
 
@@ -123,8 +132,12 @@ func on_prompt(data):
 	
 func set_richtext(text):
 	parsed_message = text
+	current_message = text
 	$RichTextLabel.text = parsed_message.replace("Red", "[color=red]Red[/color]").replace("Green", "[color=green]Green[/color]").replace("Blue", "[color=blue]Blue[/color]")
 	pause(0)
+	validate_state()
+	#parsed_message = ""
+	
 	
 
 func _on_timer_timeout() -> void:
