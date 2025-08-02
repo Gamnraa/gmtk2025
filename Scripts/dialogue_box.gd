@@ -40,6 +40,19 @@ var dialog_tree = [
 		["DELAY", 1.25],
 		["ADD", " Surround us at all times."],
 		["PROMPT", true],
+	],
+	[
+		["SET", "Roses are Red."],
+		["DELAY", .76],
+		["ADD", " Violets are Blue."],
+		["DELAY", .74],
+		["SET", "I am Green with envy, watching you!"],
+		["PROMPT", true],
+		["SET", "Ah, apologies. My poetry must make you Red with rage!"],
+		["DELAY", .44],
+		["SET_IMMEDIATE", "My poetry must make you Red with rage!"],
+		["ADD", " Or maybe I've got you feeling a little Blue!"],
+		["DELAY", .22]
 	]
 ]
 
@@ -51,7 +64,8 @@ var commands = {
 	"SET_IMMEDIATE": set_richtext,
 }
 
-var arr = [_ready, validate_state]
+var refresh_rate = 0.0045
+var dx = refresh_rate
 
 func _ready():
 	visible = false
@@ -59,7 +73,6 @@ func _ready():
 	_on_animation_player_animation_finished("Appear")
 	
 func validate_state():
-	print("Hello")
 	var s = parsed_message.to_lower()
 	if s.contains("red"):
 		if s.contains("green"):
@@ -85,7 +98,8 @@ func validate_state():
 	Global.State = Global.NONE
 
 func _process(delta):
-	if should_parse:
+	dx -= delta
+	if should_parse and dx <= 0:
 		parsed_message += current_message[parsed_message.length()]
 		if current_message.match(parsed_message): pause(1)
 		$RichTextLabel.text = parsed_message.replace("Red", "[color=red]Red[/color]").replace("Green", "[color=green]Green[/color]").replace("Blue", "[color=blue]Blue[/color]")
@@ -96,6 +110,8 @@ func _process(delta):
 		$Enter.visible = false
 		if visible: pause(.1)
 		else: begin_dialog()
+		
+	if dx <= 0: dx = refresh_rate
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if self.visible and dial_index < dialog_tree[tree_index].size():
@@ -111,11 +127,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func begin_dialog():
 	$AnimationPlayer.play("Appear")
 	dial_index = 0
+	#Global.TheScene.get_node("Window").play("Talking")
 	
 func end_dialog():
 	$AnimationPlayer.play_backwards("Appear")
 	should_parse = false
 	Global.State = Global.NONE
+	#Global.TheScene.get_node("Window").play("Idle")
 	
 func set_message(text):
 	current_message = text
