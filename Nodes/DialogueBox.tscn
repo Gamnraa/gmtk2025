@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnv1eu0nejpev"]
+[gd_scene load_steps=12 format=3 uid="uid://bnv1eu0nejpev"]
 
 [ext_resource type="Shader" uid="uid://tdnpojvrk85h" path="res://Shaders/ColorControl.gdshader" id="1_v40lu"]
 [ext_resource type="Script" uid="uid://cd5tio43jwki3" path="res://Scripts/dialogue_box.gd" id="1_wuo72"]
 [ext_resource type="Texture2D" uid="uid://h8mw0vlj727n" path="res://Graphics/placeholder.png" id="2_eo7iu"]
 [ext_resource type="Texture2D" uid="uid://b12k6ybnudxq7" path="res://Graphics/Dr._Dialogue.png" id="4_wuo72"]
 [ext_resource type="Shader" uid="uid://ca5j1ri5yuhl8" path="res://Nodes/TextShader.gdshader" id="5_vlp87"]
+[ext_resource type="Texture2D" uid="uid://cphv4g4uruldb" path="res://Graphics/enter-key.png" id="6_50nuf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wuo72"]
 shader = ExtResource("1_v40lu")
@@ -133,6 +134,11 @@ text = "[color=red]Hello, I am dialogue![/color]"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Enter" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1068, 258)
+texture = ExtResource("6_50nuf")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

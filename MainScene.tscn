@@ -31,6 +31,7 @@ position = Vector2(185, 128)
 
 [node name="Player" parent="." instance=ExtResource("5_rf2cd")]
 position = Vector2(-49, 48)
+scale = Vector2(1, 1)
 
 [node name="DialogueBox" parent="." instance=ExtResource("1_3mqji")]
 offset_left = -88.0
