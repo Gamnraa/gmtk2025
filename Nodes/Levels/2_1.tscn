@@ -20,10 +20,6 @@ color = 0
 position = Vector2(288, -512)
 color = 2
 
-[node name="PlatformBig" parent="." instance=ExtResource("1_yrng4")]
-position = Vector2(1536, -688)
-rotation = 1.5708
-
 [node name="PlatformMedium" parent="." instance=ExtResource("3_m5mcx")]
 position = Vector2(-544, -640)
 
@@ -32,7 +28,7 @@ position = Vector2(-672, -768)
 color = 1
 
 [node name="PlatformBig3" parent="." instance=ExtResource("1_yrng4")]
-position = Vector2(864, -896)
+position = Vector2(992, -896)
 
 [node name="PlatformSmall" parent="." instance=ExtResource("1_8h5j3")]
 position = Vector2(160, -128)
@@ -50,20 +46,12 @@ color = 2
 position = Vector2(416, 128)
 color = 2
 
-[node name="PlatformBig4" parent="." instance=ExtResource("1_yrng4")]
-position = Vector2(1520, -672)
-rotation = 1.5708
-
 [node name="PlatformSmall8" parent="." instance=ExtResource("1_8h5j3")]
 position = Vector2(-96, 128)
 color = 0
 
 [node name="PlatformBig5" parent="." instance=ExtResource("1_yrng4")]
 position = Vector2(96, -896)
-
-[node name="PlatformBig6" parent="." instance=ExtResource("1_yrng4")]
-position = Vector2(1504, -656)
-rotation = 1.5708
 
 [node name="PlatformSmall9" parent="." instance=ExtResource("1_8h5j3")]
 position = Vector2(160, 128)
@@ -113,10 +101,6 @@ color = 0
 
 [node name="PlatformMedium6" parent="." instance=ExtResource("3_m5mcx")]
 position = Vector2(1632, 0)
-
-[node name="PlatformBig2" parent="." instance=ExtResource("1_yrng4")]
-position = Vector2(1312, -960)
-rotation = 1.5708
 
 [node name="PlatformBig7" parent="." instance=ExtResource("1_yrng4")]
 position = Vector2(1312, -448)
@@ -170,10 +154,6 @@ color = 2
 position = Vector2(1056, 0)
 color = 2
 
-[node name="PlatformSmall31" parent="." instance=ExtResource("1_8h5j3")]
-position = Vector2(1184, 128)
-color = 1
-
 [node name="PlatformSmall32" parent="." instance=ExtResource("1_8h5j3")]
 position = Vector2(1184, -128)
 color = 2
@@ -214,3 +194,17 @@ position = Vector2(32, -384)
 
 [node name="PlatformSmall42" parent="." instance=ExtResource("1_8h5j3")]
 position = Vector2(672, -512)
+
+[node name="PlatformMedium4" parent="." instance=ExtResource("3_m5mcx")]
+position = Vector2(1248, 128)
+color = 1
+
+[node name="PlatformMedium7" parent="." instance=ExtResource("3_m5mcx")]
+position = Vector2(608, -896)
+
+[node name="PlatformMedium8" parent="." instance=ExtResource("3_m5mcx")]
+position = Vector2(1312, -832)
+rotation = 1.5708
+
+[node name="PlatformSmall31" parent="." instance=ExtResource("1_8h5j3")]
+position = Vector2(416, -896)
