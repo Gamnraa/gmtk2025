@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwgvuhbral6wv"]
+
+[ext_resource type="PackedScene" uid="uid://b4r00hkgdyuap" path="res://Nodes/PlatformSmall.tscn" id="1_y4cek"]
+[ext_resource type="PackedScene" uid="uid://d3gsx1wbbm70y" path="res://Nodes/PlatformMed.tscn" id="2_genog"]
+[ext_resource type="PackedScene" uid="uid://blaul8bw43pew" path="res://Nodes/PlatformBig.tscn" id="3_mkst0"]
+
+[node name="1-1" type="Node2D"]
+position = Vector2(16, -32)
+scale = Vector2(0.5, 0.5)
+
+[node name="PlatformSmall10" parent="." instance=ExtResource("1_y4cek")]
+position = Vector2(1264, -864)
+
+[node name="PlatformSmall12" parent="." instance=ExtResource("1_y4cek")]
+position = Vector2(1440, 0)
+
+[node name="PlatformSmall13" parent="." instance=ExtResource("1_y4cek")]
+position = Vector2(160, 0)
+
+[node name="PlatformMedium5" parent="." instance=ExtResource("2_genog")]
+position = Vector2(1296, -592)
+rotation = 1.5708
+color = 0
+
+[node name="PlatformMedium6" parent="." instance=ExtResource("2_genog")]
+position = Vector2(1632, 0)
+
+[node name="PlatformBig7" parent="." instance=ExtResource("3_mkst0")]
+position = Vector2(1952, -640)
+rotation = 1.5708
+
+[node name="PlatformSmall33" parent="." instance=ExtResource("1_y4cek")]
+position = Vector2(1824, -960)
+color = 4
+
+[node name="PlatformSmall35" parent="." instance=ExtResource("1_y4cek")]
+position = Vector2(1696, -832)
+color = 2
+
+[node name="PlatformSmall40" parent="." instance=ExtResource("1_y4cek")]
+position = Vector2(1824, -704)
+color = 1
+
+[node name="PlatformSmall41" parent="." instance=ExtResource("1_y4cek")]
+position = Vector2(800, -960)
+
+[node name="PlatformSmall42" parent="." instance=ExtResource("1_y4cek")]
+position = Vector2(1184, 0)
+
+[node name="PlatformMedium7" parent="." instance=ExtResource("2_genog")]
+position = Vector2(1360, -880)
+rotation = 1.5708
+
+[node name="PlatformMedium8" parent="." instance=ExtResource("2_genog")]
+position = Vector2(928, -896)
+rotation = 1.5708
+
+[node name="PlatformBig4" parent="." instance=ExtResource("3_mkst0")]
+position = Vector2(1120, 128)
+
+[node name="PlatformBig9" parent="." instance=ExtResource("3_mkst0")]
+position = Vector2(608, 128)
+color = 0
+
+[node name="PlatformBig10" parent="." instance=ExtResource("3_mkst0")]
+position = Vector2(288, -64)
+rotation = 1.5708
+
+[node name="PlatformBig11" parent="." instance=ExtResource("3_mkst0")]
+position = Vector2(1568, -768)
+rotation = 1.5708
+
+[node name="PlatformBig12" parent="." instance=ExtResource("3_mkst0")]
+position = Vector2(1248, -704)
+color = 4
+
+[node name="PlatformMedium10" parent="." instance=ExtResource("2_genog")]
+position = Vector2(1344, -784)
+color = 2
+
+[node name="PlatformMedium12" parent="." instance=ExtResource("2_genog")]
+position = Vector2(1360, -784)
+color = 1
+
+[node name="PlatformMedium14" parent="." instance=ExtResource("2_genog")]
+position = Vector2(-160, 128)
+color = 0
