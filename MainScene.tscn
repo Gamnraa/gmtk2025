@@ -10,7 +10,7 @@
 size = Vector2(1907, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rf2cd"]
-size = Vector2(109, 178)
+size = Vector2(129, 178)
 
 [node name="MainScene" type="Node2D"]
 position = Vector2(88, 340)
@@ -23,10 +23,9 @@ scale = Vector2(0.5, 0.5)
 [node name="PlatformSmall" parent="PlatR2" instance=ExtResource("4_uxrcv")]
 
 [node name="Level" type="Node2D" parent="."]
-position = Vector2(150, 0)
+position = Vector2(185, 128)
 
 [node name="1-1" parent="Level" instance=ExtResource("4_a814b")]
-position = Vector2(38, 126)
 
 [node name="Player" parent="." instance=ExtResource("5_rf2cd")]
 position = Vector2(-49, 48)
@@ -50,7 +49,8 @@ shape = SubResource("RectangleShape2D_uxrcv")
 position = Vector2(1000, 100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
-position = Vector2(44.5, -91)
+position = Vector2(34.5, -91)
 shape = SubResource("RectangleShape2D_rf2cd")
 
 [connection signal="body_entered" from="Lose" to="." method="_on_lose_body_entered"]
+[connection signal="body_entered" from="Win" to="." method="_on_win_body_entered"]
