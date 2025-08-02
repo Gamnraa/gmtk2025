@@ -23,13 +23,33 @@ var dialog_tree = [
 		["ADD", " It is essential to our very exisence."],
 		["PROMPT", true],
 	],
+	[
+		["SET", "Red..."],
+		["DELAY", .33],
+		["ADD", " Green..."],
+		["DELAY", .33],
+		["SET_IMMEDIATE", "Green..."],
+		["DELAY", .15],
+		
+	]
 ]
+
+var commands = {
+	"SET": set_message,
+	"ADD": add_to_message,
+	"DELAY": pause,
+	"PROMPT": on_prompt,
+	"SET_IMMEDIATE": set_richtext,
+}
+
+var arr = [_ready, validate_state]
 
 func _ready():
 	visible = false
 	_on_animation_player_animation_finished("Appear")
 	
 func validate_state():
+	print("Hello")
 	var s = parsed_message.to_lower()
 	if s.contains("red"):
 		if s.contains("green"):
@@ -70,16 +90,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if self.visible and dial_index < dialog_tree[tree_index].size():
 		should_parse = true
 		dialog = dialog_tree[tree_index][dial_index]
-		if dialog[0] == "DELAY":
-			pause(dialog[1])
-			return
-		elif dialog[0] == "PROMPT":
-			should_parse = false
-			player_input = false
-		elif dialog[0] == "SET":
-			set_message(dialog[1])
-		elif dialog[0] == "ADD":
-			add_to_message(dialog[1])
+		commands[dialog[0]].call(dialog[1])
 	elif self.visible:
 		end_dialog()
 	elif not self.visible:
@@ -105,6 +116,16 @@ func add_to_message(text):
 func pause(time):
 	$Timer.start(time)
 	should_parse = false
+	
+func on_prompt(data):
+	should_parse = false
+	player_input = false
+	
+func set_richtext(text):
+	parsed_message = text
+	$RichTextLabel.text = parsed_message.replace("Red", "[color=red]Red[/color]").replace("Green", "[color=green]Green[/color]").replace("Blue", "[color=blue]Blue[/color]")
+	pause(0)
+	
 
 func _on_timer_timeout() -> void:
 	dial_index += 1
