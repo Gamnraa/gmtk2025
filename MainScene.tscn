@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b0lvj8oiu4m7n" path="res://Nodes/Player.tscn" id="5_rf2cd"]
 [ext_resource type="Texture2D" uid="uid://ck40qrlgtnsmr" path="res://Graphics/background.png" id="6_a814b"]
 [ext_resource type="Texture2D" uid="uid://df5kty0vkg2qe" path="res://Graphics/window-spritesheet.png" id="7_5crlr"]
-[ext_resource type="PackedScene" uid="uid://4inwg4sk6cir" path="res://Nodes/audio_stream_player.tscn" id="8_hbc2u"]
+[ext_resource type="PackedScene" path="res://Nodes/audio_stream_player.tscn" id="8_hbc2u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxrcv"]
 size = Vector2(1907, 100)

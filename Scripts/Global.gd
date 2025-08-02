@@ -7,8 +7,8 @@ enum {RED, GREEN, BLUE, REDGREEN, GREENBLUE, REDBLUE, REDGREENBLUE, NONE}
 var State = NONE
 var ActiveColors = {"RED":[RED, REDGREEN, REDBLUE, REDGREENBLUE], "GREEN":[GREEN, REDGREEN, GREENBLUE, REDGREENBLUE], "BLUE":[BLUE, GREENBLUE, REDBLUE, REDGREENBLUE]}
 
-var level = 1
-var sublevel = 1
+var level = 0
+var sublevel = 0
 
 var levels = [
 	["1_1.tscn", "1_2.tscn", "1_3.tscn", "1_4.tscn"],
