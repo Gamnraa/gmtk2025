@@ -11,10 +11,10 @@ var level = 0
 var sublevel = 0
 
 var levels = [
-	["1-1.tscn", "1-2.tscn", "1-3.tscn", "1-4.tscn"],
-	["2-1.tscn", "2-2.tscn", "2-3.tscn", "2-4.tscn"],
-	["3-1.tscn", "3-2.tscn"],
-	["4-1.tscn"]
+	["1_1.tscn", "1_2.tscn", "1_3.tscn", "1_4.tscn"],
+	["2_1.tscn", "2_2.tscn", "2_3.tscn", "2_4.tscn"],
+	["3_1.tscn", "3_2.tscn"],
+	["4_1.tscn"]
 ]
 
 func _ready():
@@ -23,7 +23,23 @@ func _ready():
 	ThePlayer = TheScene.get_node("Player")
 	
 func reset_player(should_progress):
-	print("reset", ThePlayer.position, ThePlayer.start_pos)
 	ThePlayer.position = ThePlayer.start_pos
 	ThePlayer.velocity.x = 0
+	
+	if should_progress:
+		if sublevel + 1 == levels[level].size():
+			if level + 1 == levels.size(): 
+				#end the game
+				level = -1
+			sublevel = -1
+			level += 1
+		sublevel += 1
+		
+		var next_level = levels[level][sublevel]
+		
+		TheScene.get_node("Level").get_child(0).free()
+		next_level = load("res://Nodes/Levels/" + next_level)
+		TheScene.get_node("Level").add_child(next_level.instantiate())
+		
+		
 	
