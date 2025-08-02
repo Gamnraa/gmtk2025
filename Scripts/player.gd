@@ -7,9 +7,11 @@ var accel = 22
 var activated = true
 var was_grounded = true
 
+var start_pos = Vector2(0, 0)
+
 
 func _ready():
-	pass
+	start_pos = position
 	
 func _physics_process(delta: float):
 	var grounded = is_on_floor()
