@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyabt5wt67cd6"]
+[gd_scene load_steps=8 format=3 uid="uid://dyabt5wt67cd6"]
 
 [ext_resource type="PackedScene" uid="uid://bnv1eu0nejpev" path="res://Nodes/DialogueBox.tscn" id="1_3mqji"]
+[ext_resource type="Script" uid="uid://cwxv6yblfuae2" path="res://Scripts/main_scene.gd" id="1_rf2cd"]
 [ext_resource type="PackedScene" uid="uid://c4jmhrus4k2pi" path="res://Nodes/Levels/1_1.tscn" id="4_a814b"]
 [ext_resource type="PackedScene" uid="uid://d3gsx1wbbm70y" path="res://Nodes/PlatformMed.tscn" id="4_uxrcv"]
 [ext_resource type="PackedScene" uid="uid://b0lvj8oiu4m7n" path="res://Nodes/Player.tscn" id="5_rf2cd"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxrcv"]
+size = Vector2(1907, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rf2cd"]
+size = Vector2(109, 178)
+
 [node name="MainScene" type="Node2D"]
 position = Vector2(88, 340)
+script = ExtResource("1_rf2cd")
 
 [node name="PlatR2" type="Node2D" parent="."]
 position = Vector2(-88, 126)
@@ -30,3 +38,19 @@ offset_right = -88.0
 offset_bottom = 8.0
 size_flags_vertical = 8
 metadata/_edit_use_anchors_ = true
+
+[node name="Lose" type="Area2D" parent="."]
+position = Vector2(0, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lose"]
+position = Vector2(438.5, -40)
+shape = SubResource("RectangleShape2D_uxrcv")
+
+[node name="Win" type="Area2D" parent="."]
+position = Vector2(1000, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
+position = Vector2(44.5, -91)
+shape = SubResource("RectangleShape2D_rf2cd")
+
+[connection signal="body_entered" from="Lose" to="." method="_on_lose_body_entered"]
