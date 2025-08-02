@@ -17,30 +17,14 @@ var tween = create_tween()
 
 func _ready():
 	state = Global.State
-	stream = songs[Global.State]
-	stream
 	play()
+	get_stream_playback().switch_to_clip_by_name("base")
+	
 
 func _process(delta):
-	current_time += delta
-	
-	print(get_playback_position(), " ", stream.get_length())
-	if get_playback_position() >= stream.get_length(): 
-		seek(0)
-		play()
-		
 	if state != Global.State:
-		var t = get_playback_position()
-		#stop()
-		state = Global.State
-		stream = songs[Global.State]
-		await tween.tween_property(self, "volume_db", 0, 26)
-		#tween.parallel().tween_property(self, "volume_db", 1, .16)
-		tween.play()
-		play()
-		#tween.tween_property(self, "volume_db", 1, 1)
-		#tween.play()
-		seek(t)
+		get_stream_playback().switch_to_clip(Global.State)
+		state =  Global.State
 		
 	
 	
