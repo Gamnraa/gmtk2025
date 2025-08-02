@@ -22,7 +22,7 @@ func _physics_process(delta: float):
 		velocity += get_gravity() * 0.037
 	
 	if grounded and Input.is_action_just_pressed("jump"):
-		velocity.y = -air_speed * 2
+		velocity.y = -air_speed * 2.17
 		
 	if Input.is_action_pressed("right"):
 		
