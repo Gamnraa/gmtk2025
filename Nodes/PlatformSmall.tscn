@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://tdnpojvrk85h" path="res://Shaders/ColorControl.gdshader" id="1_bjnky"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_17qbk"]
+resource_local_to_scene = true
 shader = ExtResource("1_bjnky")
 shader_parameter/red = false
 shader_parameter/blue = false
