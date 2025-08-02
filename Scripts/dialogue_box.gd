@@ -55,6 +55,7 @@ var arr = [_ready, validate_state]
 
 func _ready():
 	visible = false
+	$Enter.visible = false
 	_on_animation_player_animation_finished("Appear")
 	
 func validate_state():
@@ -92,6 +93,7 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("enter") and not player_input:
 		player_input = true
+		$Enter.visible = false
 		if visible: pause(.1)
 		else: begin_dialog()
 
@@ -129,6 +131,7 @@ func pause(time):
 func on_prompt(data):
 	should_parse = false
 	player_input = false
+	$Enter.visible = true
 	
 func set_richtext(text):
 	parsed_message = text
