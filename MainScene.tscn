@@ -45,11 +45,13 @@ position = Vector2(-88, 126)
 scale = Vector2(0.5, 0.5)
 
 [node name="PlatformSmall" parent="PlatR2" instance=ExtResource("4_uxrcv")]
+position = Vector2(0, 28)
 
 [node name="Level" type="Node2D" parent="."]
 position = Vector2(185, 128)
 
 [node name="1-1" parent="Level" instance=ExtResource("4_a814b")]
+position = Vector2(-17, 44)
 
 [node name="Player" parent="." instance=ExtResource("5_rf2cd")]
 position = Vector2(-49, 48)
