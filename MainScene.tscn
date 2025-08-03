@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dyabt5wt67cd6"]
+[gd_scene load_steps=16 format=3 uid="uid://dyabt5wt67cd6"]
 
 [ext_resource type="PackedScene" uid="uid://bnv1eu0nejpev" path="res://Nodes/DialogueBox.tscn" id="1_3mqji"]
 [ext_resource type="Script" uid="uid://cwxv6yblfuae2" path="res://Scripts/main_scene.gd" id="1_rf2cd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ck40qrlgtnsmr" path="res://Graphics/background.png" id="6_a814b"]
 [ext_resource type="Texture2D" uid="uid://df5kty0vkg2qe" path="res://Graphics/window-spritesheet.png" id="7_5crlr"]
 [ext_resource type="PackedScene" uid="uid://cqbip4kljwctd" path="res://Nodes/audio_stream_player.tscn" id="8_hbc2u"]
+[ext_resource type="PackedScene" uid="uid://ej3m42x8kxn0" path="res://Nodes/win.tscn" id="9_torvr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxrcv"]
 size = Vector2(1907, 100)
@@ -106,6 +107,13 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("8_hbc2u")]
+
+[node name="Win2" parent="." instance=ExtResource("9_torvr")]
+visible = false
+offset_left = 503.0
+offset_top = -213.0
+offset_right = 503.0
+offset_bottom = -213.0
 
 [connection signal="body_entered" from="Lose" to="." method="_on_lose_body_entered"]
 [connection signal="body_entered" from="Win" to="." method="_on_win_body_entered"]
