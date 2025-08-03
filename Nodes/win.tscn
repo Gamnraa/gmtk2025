@@ -1,23 +1,38 @@
-[gd_scene format=3 uid="uid://ej3m42x8kxn0"]
+[gd_scene load_steps=3 format=3 uid="uid://ej3m42x8kxn0"]
+
+[ext_resource type="FontFile" uid="uid://blxn5s6d6vupj" path="res://Graphics/DebugMenu.ttf" id="1_uj3wq"]
+[ext_resource type="Texture2D" uid="uid://bc8d7ehcavwlw" path="res://Graphics/dialogue-box.png" id="2_l7oc8"]
 
 [node name="Win" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = -121.0
-offset_top = 18.0
-offset_right = 140.0
-offset_bottom = 92.0
+offset_left = -144.0
+offset_top = 32.0
+offset_right = 117.0
+offset_bottom = 106.0
+scale = Vector2(1.4413, 1.52925)
+theme_override_fonts/normal_font = ExtResource("1_uj3wq")
 theme_override_font_sizes/mono_font_size = 5
 theme_override_font_sizes/normal_font_size = 40
 text = "YOU WIN!!!"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = -110.0
-offset_top = 98.0
-offset_right = 92.0
-offset_bottom = 138.0
+offset_left = -168.0
+offset_top = 88.0
+offset_right = 34.0
+offset_bottom = 128.0
+scale = Vector2(1.62251, 1.51937)
+theme_override_fonts/normal_font = ExtResource("1_uj3wq")
 text = "Press enter to play again"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(0, 72)
+texture = ExtResource("2_l7oc8")
