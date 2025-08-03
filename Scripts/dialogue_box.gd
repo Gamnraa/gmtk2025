@@ -14,12 +14,13 @@ var dialog_tree = [
 	[
 		["SET", "Red is one of the 3 additive primary colors. From apples to cardinals to red blood cells, it permeates all around us."],
 		["PROMPT", true],
-		["SET", "The trees that provide us with oxygen, the vegetables we consume: Green."],
+		["SET_IMMEDIATE", "The trees that provide us with oxygen, "],
+		["ADD", "the vegetables we consume: Green."],
 		["PROMPT", true],
-		["SET", "The final primary color, additively: Blue."],
-		["DELAY", 1],
+		["SET", "The final primary color, Blue."],
+		["DELAY", .5],
 		["ADD", " The water we drink."],
-		["DELAY", 1],
+		["DELAY", .5],
 		["ADD", " It is essential to our very existence."],
 		["PROMPT", true],
 	],
@@ -54,6 +55,7 @@ var dialog_tree = [
 		["ADD", " Or maybe I've got you feeling a little Blue!"],
 		["DELAY", .97],
 	],
+	[
 		["SET", "Red "],
 		["DELAY", .25],
 		["ADD", "Green "],
@@ -79,6 +81,7 @@ var dialog_tree = [
 		["ADD", "Green "],
 		["DELAY", .25],
 		["ADD", "Blue "],
+	]
 ]
 
 var commands = {
@@ -125,7 +128,7 @@ func validate_state():
 func _process(delta):
 	#We discovered one of us was building levels with a 144hz monitor and the other a 60hz
 	#Keep up gramps
-	dx -= delta * 4
+	dx -= delta
 	if should_parse and dx <= 0:
 		parsed_message += current_message[parsed_message.length()]
 		if current_message.match(parsed_message): pause(.25)

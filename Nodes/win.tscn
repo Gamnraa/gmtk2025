@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ej3m42x8kxn0"]
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -121.0
+offset_top = 18.0
+offset_right = 140.0
+offset_bottom = 92.0
+theme_override_font_sizes/mono_font_size = 5
+theme_override_font_sizes/normal_font_size = 40
+text = "YOU WIN!!!"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -110.0
+offset_top = 98.0
+offset_right = 92.0
+offset_bottom = 138.0
+text = "Press enter to play again"
