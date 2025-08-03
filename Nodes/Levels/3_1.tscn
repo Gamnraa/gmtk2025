@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfsvhcd31r7ge"]
+
+[ext_resource type="PackedScene" uid="uid://d3gsx1wbbm70y" path="res://Nodes/PlatformMed.tscn" id="1_pib3e"]
+[ext_resource type="PackedScene" uid="uid://blaul8bw43pew" path="res://Nodes/PlatformBig.tscn" id="2_chqww"]
+[ext_resource type="PackedScene" uid="uid://b4r00hkgdyuap" path="res://Nodes/PlatformSmall.tscn" id="3_bgygm"]
+
+[node name="1-1" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="PlatformMedium" parent="." instance=ExtResource("1_pib3e")]
+position = Vector2(-80, 0)
+color = 0
+
+[node name="PlatformMed" parent="." instance=ExtResource("1_pib3e")]
+position = Vector2(304, 0)
+color = 0
+
+[node name="PlatformMed2" parent="." instance=ExtResource("1_pib3e")]
+position = Vector2(560, -128)
+
+[node name="PlatformMed3" parent="." instance=ExtResource("1_pib3e")]
+position = Vector2(304, -256)
+color = 5
+
+[node name="PlatformMed3" parent="PlatformMed3" instance=ExtResource("1_pib3e")]
+position = Vector2(784, -320)
+color = 5
+
+[node name="PlatformBig" parent="." instance=ExtResource("2_chqww")]
+position = Vector2(112, -192)
+rotation = 1.5708
+color = 2
+
+[node name="PlatformMedium2" parent="." instance=ExtResource("1_pib3e")]
+position = Vector2(-80, -384)
+
+[node name="PlatformBig2" parent="." instance=ExtResource("2_chqww")]
+position = Vector2(304, -384)
+color = 1
+
+[node name="PlatformBig2" parent="PlatformBig2" instance=ExtResource("2_chqww")]
+position = Vector2(1232, 384)
+color = 2
+
+[node name="PlatformSmall" parent="." instance=ExtResource("3_bgygm")]
+position = Vector2(624, -384)
+color = 0
+
+[node name="PlatformSmall2" parent="." instance=ExtResource("3_bgygm")]
+position = Vector2(896, -384)
+color = 0
+
+[node name="PlatformSmall2" parent="PlatformSmall2" instance=ExtResource("3_bgygm")]
+position = Vector2(256, 0)
+color = 0
