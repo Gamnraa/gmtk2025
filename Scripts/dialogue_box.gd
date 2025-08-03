@@ -17,43 +17,68 @@ var dialog_tree = [
 		["SET", "The trees that provide us with oxygen, the vegetables we consume: Green."],
 		["PROMPT", true],
 		["SET", "The final primary color, additively: Blue."],
-		["DELAY", 0.25],
+		["DELAY", 1],
 		["ADD", " The water we drink."],
-		["DELAY", 0.25],
+		["DELAY", 1],
 		["ADD", " It is essential to our very exisence."],
 		["PROMPT", true],
 	],
 	[
 		["SET", "Red..."],
-		["DELAY", .33],
+		["DELAY", 1.08],
 		["ADD", " Green..."],
-		["DELAY", .33],
+		["DELAY", 1.08],
 		["SET_IMMEDIATE", "Green..."],
-		["DELAY", .15],
+		["DELAY", .90],
 		["ADD", " Blue..."],
 		["PROMPT", true],
 		["SET", "These colors, Red,"],
-		["DELAY", .20],
+		["DELAY", .95],
 		["ADD", " Green,"],
-		["DELAY", .40],
+		["DELAY", 1.15],
 		["ADD", " Blue."],
-		["DELAY", 1.25],
+		["DELAY", 2.00],
 		["ADD", " Surround us at all times."],
 		["PROMPT", true],
 	],
 	[
 		["SET", "Roses are Red."],
-		["DELAY", .76],
+		["DELAY", 1.51],
 		["ADD", " Violets are Blue."],
-		["DELAY", .74],
+		["DELAY", 1.49],
 		["SET", "I am Green with envy, watching you!"],
 		["PROMPT", true],
 		["SET", "Ah, apologies. My poetry must make you Red with rage!"],
-		["DELAY", .44],
+		["DELAY", 1.16],
 		["SET_IMMEDIATE", "My poetry must make you Red with rage!"],
 		["ADD", " Or maybe I've got you feeling a little Blue!"],
-		["DELAY", .22]
-	]
+		["DELAY", .97],
+	],
+		["SET", "Red "],
+		["DELAY", .25],
+		["ADD", "Green "],
+		["DELAY", .25],
+		["ADD", "Blue "],
+		["SET", "Red "],
+		["DELAY", .25],
+		["ADD", "Green "],
+		["DELAY", .25],
+		["ADD", "Blue "],
+		["SET", "Red "],
+		["DELAY", .25],
+		["ADD", "Green "],
+		["DELAY", .25],
+		["ADD", "Blue "],
+		["SET", "Red "],
+		["DELAY", .25],
+		["ADD", "Green "],
+		["DELAY", .25],
+		["ADD", "Blue "],
+		["SET", "Red "],
+		["DELAY", .25],
+		["ADD", "Green "],
+		["DELAY", .25],
+		["ADD", "Blue "],
 ]
 
 var commands = {
@@ -101,7 +126,7 @@ func _process(delta):
 	dx -= delta
 	if should_parse and dx <= 0:
 		parsed_message += current_message[parsed_message.length()]
-		if current_message.match(parsed_message): pause(1)
+		if current_message.match(parsed_message): pause(.25)
 		$RichTextLabel.text = parsed_message.replace("Red", "[color=red]Red[/color]").replace("Green", "[color=green]Green[/color]").replace("Blue", "[color=blue]Blue[/color]")
 		validate_state()
 		
@@ -127,13 +152,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func begin_dialog():
 	$AnimationPlayer.play("Appear")
 	dial_index = 0
-	#Global.TheScene.get_node("Window").play("Talking")
+	Global.TheScene.get_node("Window").play("talking")
 	
 func end_dialog():
 	$AnimationPlayer.play_backwards("Appear")
 	should_parse = false
 	Global.State = Global.NONE
-	#Global.TheScene.get_node("Window").play("Idle")
+	Global.TheScene.get_node("Window").play("idle")
 	
 func set_message(text):
 	current_message = text
@@ -155,7 +180,7 @@ func set_richtext(text):
 	parsed_message = text
 	current_message = text
 	$RichTextLabel.text = parsed_message.replace("Red", "[color=red]Red[/color]").replace("Green", "[color=green]Green[/color]").replace("Blue", "[color=blue]Blue[/color]")
-	pause(0)
+	pause(0.1)
 	validate_state()
 	#parsed_message = ""
 	
