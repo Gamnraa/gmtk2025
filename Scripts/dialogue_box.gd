@@ -49,9 +49,9 @@ var dialog_tree = [
 		["DELAY", 1.49],
 		["SET", "I am Green with envy, watching you!"],
 		["PROMPT", true],
-		["SET", "Ah, apologies. My poetry must make you Red with rage!"],
-		["DELAY", 1.16],
-		["SET_IMMEDIATE", "My poetry must make you Red with rage!"],
+		["SET", "You seem Red with rage!"],
+		["DELAY", 1.19],
+		["SET_IMMEDIATE", "You seem Red with rage!"],
 		["ADD", " Or maybe I've got you feeling a little Blue!"],
 		["DELAY", .97],
 	],
@@ -60,27 +60,27 @@ var dialog_tree = [
 		["DELAY", .25],
 		["ADD", "Green "],
 		["DELAY", .25],
-		["ADD", "Blue "],
+		["ADD", "Blue! "],
 		["SET", "Red "],
 		["DELAY", .25],
 		["ADD", "Green "],
 		["DELAY", .25],
-		["ADD", "Blue "],
+		["ADD", "Blue! "],
 		["SET", "Red "],
 		["DELAY", .25],
 		["ADD", "Green "],
 		["DELAY", .25],
-		["ADD", "Blue "],
+		["ADD", "Blue! "],
 		["SET", "Red "],
 		["DELAY", .25],
 		["ADD", "Green "],
 		["DELAY", .25],
-		["ADD", "Blue "],
+		["ADD", "Blue! "],
 		["SET", "Red "],
 		["DELAY", .25],
 		["ADD", "Green "],
 		["DELAY", .25],
-		["ADD", "Blue "],
+		["ADD", "Blue! "],
 	]
 ]
 
@@ -126,8 +126,9 @@ func validate_state():
 	Global.State = Global.NONE
 
 func _process(delta):
-	#We discovered one of us was building levels with a 144hz monitor and the other a 60hz
-	#Keep up gramps
+	if not Global.playing: 
+		return
+		
 	dx -= delta
 	if should_parse and dx <= 0:
 		parsed_message += current_message[parsed_message.length()]
@@ -153,6 +154,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif not self.visible:
 		player_input = false
 		$RichTextLabel.text = ""
+		parsed_message = ""
+		current_message = ""
+		dial_index = 0
 
 func begin_dialog():
 	$AnimationPlayer.play("Appear")
@@ -164,6 +168,7 @@ func end_dialog():
 	should_parse = false
 	Global.State = Global.NONE
 	Global.TheScene.get_node("Window").play("idle")
+	
 	
 func set_message(text):
 	current_message = text

@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyabt5wt67cd6"]
+[gd_scene load_steps=15 format=3 uid="uid://dyabt5wt67cd6"]
 
 [ext_resource type="PackedScene" uid="uid://bnv1eu0nejpev" path="res://Nodes/DialogueBox.tscn" id="1_3mqji"]
 [ext_resource type="Script" uid="uid://cwxv6yblfuae2" path="res://Scripts/main_scene.gd" id="1_rf2cd"]
-[ext_resource type="PackedScene" uid="uid://c4jmhrus4k2pi" path="res://Nodes/Levels/1_1.tscn" id="4_a814b"]
 [ext_resource type="PackedScene" uid="uid://d3gsx1wbbm70y" path="res://Nodes/PlatformMed.tscn" id="4_uxrcv"]
 [ext_resource type="PackedScene" uid="uid://b0lvj8oiu4m7n" path="res://Nodes/Player.tscn" id="5_rf2cd"]
 [ext_resource type="Texture2D" uid="uid://ck40qrlgtnsmr" path="res://Graphics/background.png" id="6_a814b"]
@@ -63,9 +62,6 @@ position = Vector2(0, 28)
 
 [node name="Level" type="Node2D" parent="."]
 position = Vector2(185, 128)
-
-[node name="1-1" parent="Level" instance=ExtResource("4_a814b")]
-position = Vector2(-17, 44)
 
 [node name="Player" parent="." instance=ExtResource("5_rf2cd")]
 position = Vector2(-49, 48)

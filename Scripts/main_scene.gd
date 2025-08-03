@@ -5,16 +5,20 @@ func appear():
 	$Player.show()
 	$PlatR2.show()
 	$Level.show()
-	$DialogueBox.show()
+	$Window.play("idle")
+	#$DialogueBox.show()
 	
 func disappear():
 	$Player.hide()
 	$PlatR2.hide()
 	$Level.hide()
-	$DialogueBox.hide()
+	$Window.play("talking")
+	#$DialogueBox.hide()
 	
 func _process(delta):
+	await get_tree().create_timer(.2).timeout
 	if Global.playing: $Win2.hide()
+	
 	else:
 		$Win2.show()
 		disappear()
