@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d3gsx1wbbm70y" path="res://Nodes/PlatformMed.tscn" id="2_pm8uc"]
 [ext_resource type="PackedScene" uid="uid://blaul8bw43pew" path="res://Nodes/PlatformBig.tscn" id="3_3gujl"]
 
-[node name="1-1" type="Node2D"]
+[node name="1-2" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 
 [node name="PlatformSmall17" parent="." instance=ExtResource("1_rhqfv")]
