@@ -52,6 +52,10 @@ color = 5
 [node name="PlatformBig9" parent="." instance=ExtResource("3_0y2vg")]
 position = Vector2(1248, -512)
 
+[node name="PlatformMedium" parent="PlatformBig9" instance=ExtResource("2_pyh6o")]
+position = Vector2(-1280, 256)
+color = 0
+
 [node name="PlatformBig10" parent="." instance=ExtResource("3_0y2vg")]
 position = Vector2(672, -192)
 rotation = 1.5708
@@ -74,10 +78,6 @@ rotation = 1.5708
 
 [node name="PlatformBig6" parent="." instance=ExtResource("3_0y2vg")]
 position = Vector2(608, 224)
-color = 0
-
-[node name="PlatformSmall" parent="." instance=ExtResource("1_u3hin")]
-position = Vector2(32, -256)
 color = 0
 
 [node name="PlatformSmall2" parent="." instance=ExtResource("1_u3hin")]
