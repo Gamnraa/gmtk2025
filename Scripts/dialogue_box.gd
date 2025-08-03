@@ -7,6 +7,8 @@ var parsed_message = ""
 var should_parse = false
 var player_input = true
 
+var no_advance = false
+
 var dialog = null
 var tree_index = 0
 var dial_index = 0
@@ -166,6 +168,8 @@ func begin_dialog():
 func end_dialog():
 	$AnimationPlayer.play_backwards("Appear")
 	should_parse = false
+	parsed_message = ""
+	current_message = ""
 	Global.State = Global.NONE
 	Global.TheScene.get_node("Window").play("idle")
 	
@@ -194,8 +198,8 @@ func set_richtext(text):
 	validate_state()
 	#parsed_message = ""
 	
-	
 
 func _on_timer_timeout() -> void:
+	if no_advance or not Global.playing: return
 	dial_index += 1
 	_on_animation_player_animation_finished("Appear")

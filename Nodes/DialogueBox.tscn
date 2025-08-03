@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnv1eu0nejpev"]
+[gd_scene load_steps=14 format=3 uid="uid://bnv1eu0nejpev"]
 
 [ext_resource type="Shader" uid="uid://tdnpojvrk85h" path="res://Shaders/ColorControl.gdshader" id="1_v40lu"]
 [ext_resource type="Script" uid="uid://cd5tio43jwki3" path="res://Scripts/dialogue_box.gd" id="1_wuo72"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b12k6ybnudxq7" path="res://Graphics/Dr._Dialogue.png" id="4_wuo72"]
 [ext_resource type="Shader" uid="uid://ca5j1ri5yuhl8" path="res://Nodes/TextShader.gdshader" id="5_vlp87"]
 [ext_resource type="Texture2D" uid="uid://cphv4g4uruldb" path="res://Graphics/enter-key.png" id="6_50nuf"]
+[ext_resource type="FontFile" uid="uid://blxn5s6d6vupj" path="res://Graphics/DebugMenu.ttf" id="7_wv1q5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wuo72"]
 shader = ExtResource("1_v40lu")
@@ -133,10 +134,12 @@ libraries = {
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 material = SubResource("ShaderMaterial_50nuf")
 layout_mode = 0
-offset_left = 143.0
-offset_top = 178.0
-offset_right = 1166.0
-offset_bottom = 320.0
+offset_left = 152.0
+offset_top = 168.0
+offset_right = 936.0
+offset_bottom = 272.0
+theme_override_fonts/normal_font = ExtResource("7_wv1q5")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[color=red]Hello, I am dialogue![/color]"
 

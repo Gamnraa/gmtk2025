@@ -7,7 +7,7 @@ enum {RED, GREEN, BLUE, REDGREEN, GREENBLUE, REDBLUE, REDGREENBLUE, NONE}
 var State = NONE
 var ActiveColors = {"RED":[RED, REDGREEN, REDBLUE, REDGREENBLUE], "GREEN":[GREEN, REDGREEN, GREENBLUE, REDGREENBLUE], "BLUE":[BLUE, GREENBLUE, REDBLUE, REDGREENBLUE]}
 
-var level = 3
+var level = 2
 var sublevel = 3
 var level_debug = false
 var playing = false
@@ -15,7 +15,7 @@ var playing = false
 var levels = [
 	["1_1.tscn", "1_2.tscn", "1_3.tscn", "1_4.tscn"],
 	["2_1.tscn", "2_2.tscn", "2_3.tscn", "2_4.tscn"],
-	["3_1.tscn", "3_2.tscn"],
+	["3_1.tscn", "3_2.tscn", "3_3.tscn", "3_4.tscn"],
 	["4_1.tscn", "4_2.tscn", "4_3.tscn", "4_4.tscn"]
 ]
 
@@ -54,6 +54,9 @@ func reset_player(should_progress):
 			sublevel = -1
 			level += 1
 			TheScene.get_node("DialogueBox").tree_index += 1
+			TheScene.get_node("DialogueBox").end_dialog()
+			TheScene.get_node("DialogueBox").no_advance = true
+			
 		sublevel += 1
 		
 		var next_level = levels[level][sublevel]
@@ -61,6 +64,8 @@ func reset_player(should_progress):
 		TheScene.get_node("Level").get_child(0).free()
 		next_level = load("res://Nodes/Levels/" + next_level)
 		TheScene.get_node("Level").add_child(next_level.instantiate())
+		await get_tree().create_timer(.5)
+		TheScene.get_node("DialogueBox").no_advance = false
 		
 		
 	
