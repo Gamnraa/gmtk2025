@@ -4,10 +4,10 @@ var valid_colors = [
 	[Global.RED],
 	[Global.GREEN],
 	[Global.BLUE],
-	[Global.RED, Global.GREEN],
-	[Global.GREEN, Global.BLUE],
-	[Global.RED, Global.BLUE],
-	[Global.RED, Global.GREEN, Global.BLUE],
+	[Global.RED, Global.GREEN, Global.REDGREEN],
+	[Global.GREEN, Global.BLUE, Global.GREENBLUE],
+	[Global.RED, Global.BLUE, Global.REDBLUE],
+	[Global.RED, Global.GREEN, Global.BLUE, Global.REDGREENBLUE, Global.REDGREEN, Global.GREENBLUE, Global.REDBLUE],
 	[]
 	]
 
@@ -27,6 +27,7 @@ func disappear():
 	$AnimationPlayer.play_backwards("Appear")
 
 func _ready():
+	print(Global.State)
 	init_hidden()
 	await get_tree().create_timer(.1).timeout
 	print("ready")

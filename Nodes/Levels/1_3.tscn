@@ -24,7 +24,7 @@ color = 0
 position = Vector2(1500, 0)
 
 [node name="PlatformBig3" parent="Node2D3" instance=ExtResource("2_ses8j")]
-color = 2
+color = 0
 
 [node name="Node2D4" type="Node2D" parent="."]
 position = Vector2(240, -192)
@@ -74,7 +74,7 @@ color = 2
 position = Vector2(532, -90)
 
 [node name="PlatformMed" parent="Node2D9" instance=ExtResource("2_c2h6w")]
-position = Vector2(0, 64)
+position = Vector2(-4, 90)
 color = 2
 
 [node name="Node4" type="Node2D" parent="."]
@@ -90,7 +90,7 @@ position = Vector2(886, -252)
 position = Vector2(532, -90)
 
 [node name="PlatformMed" parent="Node2D10" instance=ExtResource("2_c2h6w")]
-position = Vector2(74, 14)
+position = Vector2(60, 34)
 color = 2
 
 [node name="Node2D7" type="Node2D" parent="Node2D10"]

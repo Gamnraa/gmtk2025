@@ -8,38 +8,79 @@ var should_parse = false
 var player_input = true
 
 var dialog = null
-var tree_index = 1
+var tree_index = 0
 var dial_index = 0
 var dialog_tree = [
 	[
 		["SET", "Red is one of the 3 additive primary colors. From apples to cardinals to red blood cells, it permeates all around us."],
 		["PROMPT", true],
-		["SET", "The trees that provide us with oxygen, the vegetables we consume: Green."],
+		["SET_IMMEDIATE", "The trees that provide us with oxygen, "],
+		["ADD", "the vegetables we consume: Green."],
 		["PROMPT", true],
-		["SET", "The final primary color, additively: Blue."],
-		["DELAY", 0.25],
+		["SET", "The final primary color, Blue."],
+		["DELAY", .5],
 		["ADD", " The water we drink."],
-		["DELAY", 0.25],
-		["ADD", " It is essential to our very exisence."],
+		["DELAY", .5],
+		["ADD", " It is essential to our very existence."],
 		["PROMPT", true],
 	],
 	[
 		["SET", "Red..."],
-		["DELAY", .33],
+		["DELAY", 1.08],
 		["ADD", " Green..."],
-		["DELAY", .33],
+		["DELAY", 1.08],
 		["SET_IMMEDIATE", "Green..."],
-		["DELAY", .15],
+		["DELAY", .90],
 		["ADD", " Blue..."],
 		["PROMPT", true],
 		["SET", "These colors, Red,"],
-		["DELAY", .20],
+		["DELAY", .95],
 		["ADD", " Green,"],
-		["DELAY", .40],
+		["DELAY", 1.15],
 		["ADD", " Blue."],
-		["DELAY", 1.25],
+		["DELAY", 2.00],
 		["ADD", " Surround us at all times."],
 		["PROMPT", true],
+	],
+	[
+		["SET", "Roses are Red."],
+		["DELAY", 1.51],
+		["ADD", " Violets are Blue."],
+		["DELAY", 1.49],
+		["SET", "I am Green with envy, watching you!"],
+		["PROMPT", true],
+		["SET", "You seem Red with rage!"],
+		["DELAY", 1.19],
+		["SET_IMMEDIATE", "You seem Red with rage!"],
+		["ADD", " Or maybe I've got you feeling a little Blue!"],
+		["DELAY", .97],
+	],
+	[
+		["SET", "Red "],
+		["DELAY", .25],
+		["ADD", "Green "],
+		["DELAY", .25],
+		["ADD", "Blue! "],
+		["SET", "Red "],
+		["DELAY", .25],
+		["ADD", "Green "],
+		["DELAY", .25],
+		["ADD", "Blue! "],
+		["SET", "Red "],
+		["DELAY", .25],
+		["ADD", "Green "],
+		["DELAY", .25],
+		["ADD", "Blue! "],
+		["SET", "Red "],
+		["DELAY", .25],
+		["ADD", "Green "],
+		["DELAY", .25],
+		["ADD", "Blue! "],
+		["SET", "Red "],
+		["DELAY", .25],
+		["ADD", "Green "],
+		["DELAY", .25],
+		["ADD", "Blue! "],
 	]
 ]
 
@@ -51,14 +92,15 @@ var commands = {
 	"SET_IMMEDIATE": set_richtext,
 }
 
-var arr = [_ready, validate_state]
+var refresh_rate = 0.01667
+var dx = refresh_rate
 
 func _ready():
 	visible = false
+	$Enter.visible = false
 	_on_animation_player_animation_finished("Appear")
 	
 func validate_state():
-	print("Hello")
 	var s = parsed_message.to_lower()
 	if s.contains("red"):
 		if s.contains("green"):
@@ -84,16 +126,23 @@ func validate_state():
 	Global.State = Global.NONE
 
 func _process(delta):
-	if should_parse:
+	if not Global.playing: 
+		return
+		
+	dx -= delta
+	if should_parse and dx <= 0:
 		parsed_message += current_message[parsed_message.length()]
-		if current_message.match(parsed_message): pause(1)
+		if current_message.match(parsed_message): pause(.25)
 		$RichTextLabel.text = parsed_message.replace("Red", "[color=red]Red[/color]").replace("Green", "[color=green]Green[/color]").replace("Blue", "[color=blue]Blue[/color]")
 		validate_state()
 		
 	if Input.is_action_just_pressed("enter") and not player_input:
 		player_input = true
+		$Enter.visible = false
 		if visible: pause(.1)
 		else: begin_dialog()
+		
+	if dx <= 0: dx = refresh_rate
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if self.visible and dial_index < dialog_tree[tree_index].size():
@@ -105,15 +154,21 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif not self.visible:
 		player_input = false
 		$RichTextLabel.text = ""
+		parsed_message = ""
+		current_message = ""
+		dial_index = 0
 
 func begin_dialog():
 	$AnimationPlayer.play("Appear")
 	dial_index = 0
+	Global.TheScene.get_node("Window").play("talking")
 	
 func end_dialog():
 	$AnimationPlayer.play_backwards("Appear")
 	should_parse = false
 	Global.State = Global.NONE
+	Global.TheScene.get_node("Window").play("idle")
+	
 	
 func set_message(text):
 	current_message = text
@@ -129,12 +184,13 @@ func pause(time):
 func on_prompt(data):
 	should_parse = false
 	player_input = false
+	$Enter.visible = true
 	
 func set_richtext(text):
 	parsed_message = text
 	current_message = text
 	$RichTextLabel.text = parsed_message.replace("Red", "[color=red]Red[/color]").replace("Green", "[color=green]Green[/color]").replace("Blue", "[color=blue]Blue[/color]")
-	pause(0)
+	pause(0.1)
 	validate_state()
 	#parsed_message = ""
 	

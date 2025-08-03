@@ -1,13 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyabt5wt67cd6"]
+[gd_scene load_steps=15 format=3 uid="uid://dyabt5wt67cd6"]
 
 [ext_resource type="PackedScene" uid="uid://bnv1eu0nejpev" path="res://Nodes/DialogueBox.tscn" id="1_3mqji"]
 [ext_resource type="Script" uid="uid://cwxv6yblfuae2" path="res://Scripts/main_scene.gd" id="1_rf2cd"]
-[ext_resource type="PackedScene" uid="uid://c4jmhrus4k2pi" path="res://Nodes/Levels/1_1.tscn" id="4_a814b"]
 [ext_resource type="PackedScene" uid="uid://d3gsx1wbbm70y" path="res://Nodes/PlatformMed.tscn" id="4_uxrcv"]
 [ext_resource type="PackedScene" uid="uid://b0lvj8oiu4m7n" path="res://Nodes/Player.tscn" id="5_rf2cd"]
 [ext_resource type="Texture2D" uid="uid://ck40qrlgtnsmr" path="res://Graphics/background.png" id="6_a814b"]
 [ext_resource type="Texture2D" uid="uid://df5kty0vkg2qe" path="res://Graphics/window-spritesheet.png" id="7_5crlr"]
-[ext_resource type="PackedScene" uid="uid://4inwg4sk6cir" path="res://Nodes/audio_stream_player.tscn" id="8_hbc2u"]
+[ext_resource type="PackedScene" uid="uid://cqbip4kljwctd" path="res://Nodes/audio_stream_player.tscn" id="8_hbc2u"]
+[ext_resource type="PackedScene" uid="uid://ej3m42x8kxn0" path="res://Nodes/win.tscn" id="9_torvr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxrcv"]
 size = Vector2(1907, 100)
@@ -23,6 +23,10 @@ region = Rect2(0, 128, 512, 128)
 atlas = ExtResource("7_5crlr")
 region = Rect2(0, 256, 512, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xkvn"]
+atlas = ExtResource("7_5crlr")
+region = Rect2(0, 0, 512, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xkvn"]
 animations = [{
 "frames": [{
@@ -33,8 +37,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_torvr")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"idle",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xkvn")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
 }]
 
 [node name="MainScene" type="Node2D"]
@@ -50,9 +62,6 @@ position = Vector2(0, 28)
 
 [node name="Level" type="Node2D" parent="."]
 position = Vector2(185, 128)
-
-[node name="1-1" parent="Level" instance=ExtResource("4_a814b")]
-position = Vector2(-17, 44)
 
 [node name="Player" parent="." instance=ExtResource("5_rf2cd")]
 position = Vector2(-49, 48)
@@ -86,14 +95,21 @@ position = Vector2(503, 108)
 scale = Vector2(1.1543, 1.1543)
 texture = ExtResource("6_a814b")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Window" type="AnimatedSprite2D" parent="."]
 z_index = -1
 position = Vector2(509, -298)
 sprite_frames = SubResource("SpriteFrames_8xkvn")
-animation = &"new_animation"
-autoplay = "new_animation"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("8_hbc2u")]
+
+[node name="Win2" parent="." instance=ExtResource("9_torvr")]
+visible = false
+offset_left = 503.0
+offset_top = -213.0
+offset_right = 503.0
+offset_bottom = -213.0
 
 [connection signal="body_entered" from="Lose" to="." method="_on_lose_body_entered"]
 [connection signal="body_entered" from="Win" to="." method="_on_win_body_entered"]
