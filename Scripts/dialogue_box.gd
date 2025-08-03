@@ -20,7 +20,7 @@ var dialog_tree = [
 		["DELAY", 1],
 		["ADD", " The water we drink."],
 		["DELAY", 1],
-		["ADD", " It is essential to our very exisence."],
+		["ADD", " It is essential to our very existence."],
 		["PROMPT", true],
 	],
 	[
@@ -89,7 +89,7 @@ var commands = {
 	"SET_IMMEDIATE": set_richtext,
 }
 
-var refresh_rate = 0.0045
+var refresh_rate = 0.01667
 var dx = refresh_rate
 
 func _ready():
@@ -123,7 +123,9 @@ func validate_state():
 	Global.State = Global.NONE
 
 func _process(delta):
-	dx -= delta
+	#We discovered one of us was building levels with a 144hz monitor and the other a 60hz
+	#Keep up gramps
+	dx -= delta * 4
 	if should_parse and dx <= 0:
 		parsed_message += current_message[parsed_message.length()]
 		if current_message.match(parsed_message): pause(.25)
