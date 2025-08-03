@@ -7,14 +7,14 @@ enum {RED, GREEN, BLUE, REDGREEN, GREENBLUE, REDBLUE, REDGREENBLUE, NONE}
 var State = NONE
 var ActiveColors = {"RED":[RED, REDGREEN, REDBLUE, REDGREENBLUE], "GREEN":[GREEN, REDGREEN, GREENBLUE, REDGREENBLUE], "BLUE":[BLUE, GREENBLUE, REDBLUE, REDGREENBLUE]}
 
-var level = 0
-var sublevel = 0
+var level = 2
+var sublevel = 2
 var playing = false
 
 var levels = [
 	["1_1.tscn", "1_2.tscn", "1_3.tscn", "1_4.tscn"],
 	["2_1.tscn", "2_2.tscn", "2_3.tscn", "2_4.tscn"],
-	["3_1.tscn", "3_2.tscn"],
+	["3_1.tscn", "3_2.tscn", "3_3.tscn"],
 	["4_1.tscn", "4_2.tscn"]
 ]
 
