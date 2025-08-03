@@ -7,15 +7,16 @@ enum {RED, GREEN, BLUE, REDGREEN, GREENBLUE, REDBLUE, REDGREENBLUE, NONE}
 var State = NONE
 var ActiveColors = {"RED":[RED, REDGREEN, REDBLUE, REDGREENBLUE], "GREEN":[GREEN, REDGREEN, GREENBLUE, REDGREENBLUE], "BLUE":[BLUE, GREENBLUE, REDBLUE, REDGREENBLUE]}
 
-var level = 2
-var sublevel = 2
+var level = 3
+var sublevel = 3
+var level_debug = false
 var playing = false
 
 var levels = [
 	["1_1.tscn", "1_2.tscn", "1_3.tscn", "1_4.tscn"],
 	["2_1.tscn", "2_2.tscn", "2_3.tscn", "2_4.tscn"],
-	["3_1.tscn", "3_2.tscn", "3_3.tscn"],
-	["4_1.tscn", "4_2.tscn"]
+	["3_1.tscn", "3_2.tscn"],
+	["4_1.tscn", "4_2.tscn", "4_3.tscn", "4_4.tscn"]
 ]
 
 func _ready():
@@ -27,6 +28,10 @@ func _ready():
 	playing = true
 	State = NONE
 	
+	
+	if not level_debug:
+		level = 0
+		sublevel = 0
 	var next_level = levels[level][sublevel]
 	TheScene.get_node("DialogueBox").tree_index = level
 	TheScene.appear()
