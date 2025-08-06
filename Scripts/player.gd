@@ -4,6 +4,9 @@ var ground_speed = 220
 var air_speed = 270
 var accel = 22
 
+var coyote_timer = 5
+var coyote_timer_max = 5
+
 var activated = true
 var was_grounded = true
 
@@ -21,7 +24,12 @@ func _physics_process(delta: float):
 		max_speed = air_speed
 		velocity += get_gravity() * 0.037
 	
-	if grounded and Input.is_action_just_pressed("jump"):
+	if !is_on_floor() and coyote_timer > 0:
+		coyote_timer -= 1
+	if is_on_floor():
+		coyote_timer = coyote_timer_max
+	
+	if (grounded or coyote_timer > 0) and Input.is_action_just_pressed("jump"):
 		velocity.y = -air_speed * 2.17
 		
 	if Input.is_action_pressed("right"):
