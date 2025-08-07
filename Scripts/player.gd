@@ -19,6 +19,7 @@ func _ready():
 	
 func _physics_process(delta: float):
 	var grounded = is_on_floor()
+	var move_buttons_pressed = Input.is_action_just_pressed("right") or Input.is_action_just_pressed("left")
 	
 	max_speed = ground_speed
 	if not grounded:
@@ -50,6 +51,8 @@ func _physics_process(delta: float):
 		velocity.x = move_toward(velocity.x, 0, accel)
 		$Sprite2D/AnimationPlayer.play("player-idle")
 		
-	if not was_grounded and grounded: velocity.x = max(velocity.x - (accel * 5.13), 0)
+	if not was_grounded and grounded: 
+		if velocity.x > 0: velocity.x -= accel * 6.67
+		if velocity.x < 0: velocity.x += accel * 6.67
 	was_grounded = grounded
 	move_and_slide()
