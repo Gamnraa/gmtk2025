@@ -1,8 +1,9 @@
 extends CharacterBody2D
 var max_speed = 150
-var ground_speed = 220
+var ground_speed = 244
 var air_speed = 270
-var accel = 22
+var accel = 21
+var jump_force = 572.4
 
 var coyote_timer = 5
 var coyote_timer_max = 5
@@ -41,7 +42,7 @@ func _physics_process(delta: float):
 		if is_on_floor(): $Sprite2D/AnimationPlayer.play("player-walk")
 		
 	if (grounded or coyote_timer > 0) and Input.is_action_just_pressed("jump"):
-		velocity.y = -air_speed * 2.17
+		velocity.y = -jump_force
 		if velocity.x > 0: velocity.x += 350
 		if velocity.x < 0: velocity.x -= 350
 		
@@ -49,6 +50,6 @@ func _physics_process(delta: float):
 		velocity.x = move_toward(velocity.x, 0, accel)
 		$Sprite2D/AnimationPlayer.play("player-idle")
 		
-	if not was_grounded and grounded: velocity.x = max(velocity.x - (accel * 6.7), 0)
+	if not was_grounded and grounded: velocity.x = max(velocity.x - (accel * 5.13), 0)
 	was_grounded = grounded
 	move_and_slide()
