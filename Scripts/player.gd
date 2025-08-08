@@ -19,7 +19,8 @@ func _ready():
 	
 func _physics_process(delta: float):
 	var grounded = is_on_floor()
-	var move_buttons_pressed = Input.is_action_just_pressed("right") or Input.is_action_just_pressed("left")
+	var right = Input.is_action_pressed("right")
+	var left = Input.is_action_pressed("left")
 	
 	max_speed = ground_speed
 	if not grounded:
@@ -32,7 +33,6 @@ func _physics_process(delta: float):
 		coyote_timer = coyote_timer_max
 		
 	if Input.is_action_pressed("right"):
-		
 		velocity.x = min(velocity.x + accel, max_speed)
 		$Sprite2D.flip_h = false
 		if is_on_floor(): $Sprite2D/AnimationPlayer.play("player-walk")
@@ -44,10 +44,11 @@ func _physics_process(delta: float):
 		
 	if (grounded or coyote_timer > 0) and Input.is_action_just_pressed("jump"):
 		velocity.y = -jump_force
-		if velocity.x > 0: velocity.x += 350
-		if velocity.x < 0: velocity.x -= 350
-		
-	if not(Input.is_action_pressed("left") or Input.is_action_pressed("right")) and grounded:
+		#if move_buttons_pressed:
+		if right: velocity.x += 350
+		if left: velocity.x -= 350
+	
+	if not (left or right) and grounded:
 		velocity.x = move_toward(velocity.x, 0, accel)
 		$Sprite2D/AnimationPlayer.play("player-idle")
 		
